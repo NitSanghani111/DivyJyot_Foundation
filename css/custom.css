@@ -2077,10 +2077,7 @@ textarea.form-control {
   background-size: 24px 24px;
   pointer-events: none;
 }
-<<<<<<< HEAD
 
-=======
->>>>>>> a1f52e7be44e5a9a25188822d6e229d2629b325a
 .final-cta-shape {
   position: absolute;
   width: 300px;
@@ -2091,10 +2088,7 @@ textarea.form-control {
   border-radius: 50%;
   pointer-events: none;
 }
-<<<<<<< HEAD
 
-=======
->>>>>>> a1f52e7be44e5a9a25188822d6e229d2629b325a
 .final-cta-shape-2 {
   position: absolute;
   width: 250px;
@@ -2105,10 +2099,7 @@ textarea.form-control {
   border-radius: 50%;
   pointer-events: none;
 }
-<<<<<<< HEAD
 
-=======
->>>>>>> a1f52e7be44e5a9a25188822d6e229d2629b325a
 .btn-cta-pink {
   background-color: var(--accent-magenta);
   color: #fff !important;
@@ -2122,29 +2113,19 @@ textarea.form-control {
   font-size: 13px;
   letter-spacing: 1px;
 }
-<<<<<<< HEAD
 
-=======
->>>>>>> a1f52e7be44e5a9a25188822d6e229d2629b325a
 .btn-cta-pink:hover {
   background-color: #be1250;
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(216, 27, 96, 0.4);
 }
-<<<<<<< HEAD
 
-=======
->>>>>>> a1f52e7be44e5a9a25188822d6e229d2629b325a
 .btn-cta-outline {
   background-color: transparent;
   color: #fff !important;
   font-weight: 700;
   border-radius: 30px;
-<<<<<<< HEAD
   border: 2px solid rgba(255, 255, 255, 0.25);
-=======
-  border: 2px solid rgba(255,255,255,0.25);
->>>>>>> a1f52e7be44e5a9a25188822d6e229d2629b325a
   padding: 12px 32px;
   transition: all 0.3s ease;
   display: inline-block;
@@ -2152,15 +2133,11 @@ textarea.form-control {
   font-size: 13px;
   letter-spacing: 1px;
 }
-<<<<<<< HEAD
 
-=======
->>>>>>> a1f52e7be44e5a9a25188822d6e229d2629b325a
 .btn-cta-outline:hover {
   background-color: rgba(255, 255, 255, 0.08);
   border-color: #fff;
   transform: translateY(-2px);
-<<<<<<< HEAD
 }
 
 /* Global Link Overrides to Remove Template Green */
@@ -2242,6 +2219,19 @@ a:hover, a:focus {
 .btn-secondary:hover {
   background: var(--primary-navy) !important;
   border-color: var(--primary-navy) !important;
+  color: #fff !important;
+}
+
+/* Global Button Primary Retheming */
+.btn-primary {
+  background: var(--primary-navy) !important;
+  border-color: var(--primary-navy) !important;
+  color: #fff !important;
+  transition: all 0.3s ease;
+}
+.btn-primary:hover, .btn-primary:focus {
+  background: var(--accent-magenta) !important;
+  border-color: var(--accent-magenta) !important;
   color: #fff !important;
 }
 
@@ -2346,6 +2336,4 @@ a:hover, a:focus {
     margin-top: 30px !important;
     border-radius: 12px !important;
   }
-=======
->>>>>>> a1f52e7be44e5a9a25188822d6e229d2629b325a
 }
