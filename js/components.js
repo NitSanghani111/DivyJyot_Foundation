@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
             <div class="col-md-6 d-flex align-items-center">
               <p class="mb-0 phone pl-md-2" style="font-size: 13px; font-weight: 500;">
                 <a href="tel:+919099038105" class="mr-3" style="color: rgba(255,255,255,0.8);"><span class="fa fa-phone mr-1"></span> +91 90990 38105</a> 
-                <a href="mailto:contact@divyjyotgujarat.org" style="color: rgba(255,255,255,0.8);"><span class="fa fa-paper-plane mr-1"></span> contact@divyjyotgujarat.org</a>
+                <a href="mailto:info@divyjyotfoundation.com" style="color: rgba(255,255,255,0.8);"><span class="fa fa-paper-plane mr-1"></span> info@divyjyotfoundation.com</a>
               </p>
             </div>
             <div class="col-md-6 d-flex justify-content-md-end">
@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function () {
       <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
         <div class="container">
           <a class="navbar-brand d-flex align-items-center" href="index.html" style="text-decoration: none;">
-            <img src="logo.jpeg" alt="Divy Jyot Foundation Logo" style="height: 56px; width: 56px; margin-right: 12px; border-radius: 50%; border: 2px solid #fff; background: #fff; object-fit: cover;">
+            <img src="logo.jpeg" alt="Divy Jyot Foundation Logo" class="header-logo">
             <div>
               <span style="font-size: 21px; display: block; line-height: 1.1; font-weight: 800; letter-spacing: 0.5px; color: #fff;">DIVY JYOT</span>
               <span style="font-size: 11px; display: block; font-weight: 600; letter-spacing: 1.2px; color: #d81b60;">FOUNDATION</span>
@@ -69,7 +69,7 @@ document.addEventListener("DOMContentLoaded", function () {
           <div class="row">
             <div class="col-md-6 col-lg-3 mb-4 mb-md-0">
               <div class="d-flex align-items-center mb-4">
-                <img src="logo.jpeg" alt="Divy Jyot Foundation Logo" style="height: 52px; width: 52px; margin-right: 12px; border-radius: 50%; border: 2px solid #fff; background: #fff; object-fit: cover;">
+                <img src="logo.jpeg" alt="Divy Jyot Foundation Logo" class="footer-logo">
                 <div>
                   <span style="font-size: 18px; display: block; line-height: 1.1; font-weight: 800; letter-spacing: 0.5px; color: #fff; font-family: Montserrat, sans-serif;">DIVY JYOT</span>
                   <span style="font-size: 10px; display: block; font-weight: 600; letter-spacing: 1.2px; color: #d81b60; font-family: Montserrat, sans-serif;">FOUNDATION</span>
@@ -82,7 +82,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 <p class="mb-1"><span class="fa fa-map-marker mr-2" style="color:#d81b60;"></span> Ahmedabad, Gujarat, India</p>
                 <p class="mb-1"><span class="fa fa-phone mr-2" style="color:#d81b60;"></span> General: +91 90990 38105</p>
                 <p class="mb-1"><span class="fa fa-phone mr-2" style="color:#d81b60;"></span> Helpline: +91 87805 18680</p>
-                <p class="mb-1"><span class="fa fa-envelope mr-2" style="color:#d81b60;"></span> contact@divyjyotgujarat.org</p>
+                <p class="mb-1"><span class="fa fa-envelope mr-2" style="color:#d81b60;"></span> info@divyjyotfoundation.com</p>
+                <p class="mb-1"><span class="fa fa-globe mr-2" style="color:#d81b60;"></span> <a href="https://www.divyjyotfoundation.com" target="_blank" style="color:#94a3b8;">www.divyjyotfoundation.com</a></p>
               </div>
               <ul class="ftco-footer-social p-0 mb-4 d-flex">
                 <li style="list-style:none; margin-right:8px;"><a href="#" data-toggle="tooltip" data-placement="top" title="Facebook" class="d-flex align-items-center justify-content-center" style="width:36px; height:36px; border-radius:50%;"><span class="fa fa-facebook"></span></a></li>

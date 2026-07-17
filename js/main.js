@@ -223,12 +223,16 @@
 	};
 	contentWayPoint();
 
-	$('.appointment_date').datepicker({
-	  'format': 'm/d/yyyy',
-	  'autoclose': true
-	});
+	if (typeof $.fn.datepicker === 'function') {
+		$('.appointment_date').datepicker({
+		  'format': 'm/d/yyyy',
+		  'autoclose': true
+		});
+	}
 
-	$('.appointment_time').timepicker();
+	if (typeof $.fn.timepicker === 'function') {
+		$('.appointment_time').timepicker();
+	}
 
 	// Sticky navbar scroll behavior
 	var stickyNavbar = function() {

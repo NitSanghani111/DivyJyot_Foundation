@@ -34,108 +34,453 @@
   </div>
 </section>
 
-<section class="ftco-section">
+<!-- Volunteer Card Styles -->
+<style>
+  /* ── Volunteer Section Background ── */
+  .volunteer-section {
+    padding: 80px 0;
+    background: #f8fafc;
+  }
+
+  /* ── Search Bar ── */
+  .vol-search-wrap {
+    display: flex;
+    align-items: center;
+    background: #fff;
+    border-radius: 50px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+    border: 1.5px solid #e2e8f0;
+    overflow: hidden;
+    max-width: 480px;
+    margin: 0 auto;
+    transition: box-shadow 0.3s;
+  }
+  .vol-search-wrap:focus-within {
+    box-shadow: 0 4px 28px rgba(216,27,96,0.15);
+    border-color: #d81b60;
+  }
+  .vol-search-wrap input {
+    flex: 1;
+    border: none;
+    outline: none;
+    padding: 14px 22px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    color: #1e293b;
+    background: transparent;
+  }
+  .vol-search-wrap button {
+    border: none;
+    background: #d81b60;
+    color: #fff;
+    padding: 0 22px;
+    height: 50px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background 0.2s;
+  }
+  .vol-search-wrap button:hover { background: #b71c5a; }
+
+  /* ── Cards Grid ── */
+  .vol-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 28px;
+    margin-top: 10px;
+  }
+
+  /* ── Individual Card ── */
+  .vol-card-wrap {
+    perspective: 1000px;
+  }
+  .vol-card {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+    transition: transform 0.35s cubic-bezier(.25,.8,.25,1),
+                box-shadow 0.35s cubic-bezier(.25,.8,.25,1);
+    cursor: pointer;
+  }
+  .vol-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.14);
+  }
+
+  /* ── Photo Area ── */
+  .vol-photo {
+    position: relative;
+    height: 220px;
+    background-size: cover;
+    background-position: center top;
+    background-color: #dde4ee;
+  }
+  /* Gradient overlay always visible at bottom */
+  .vol-photo::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom,
+      transparent 40%,
+      rgba(15,23,42,0.65) 100%);
+    transition: opacity 0.35s;
+  }
+
+  /* ID Badge – top-right */
+  .vol-id-badge {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: rgba(216,27,96,0.9);
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    padding: 4px 10px;
+    border-radius: 30px;
+    z-index: 2;
+    text-transform: uppercase;
+    backdrop-filter: blur(4px);
+  }
+
+  /* Hover overlay with action hint */
+  .vol-hover-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg,
+      rgba(216,27,96,0.85) 0%,
+      rgba(100,5,60,0.90) 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.32s ease;
+    z-index: 3;
+  }
+  .vol-card:hover .vol-hover-overlay { opacity: 1; }
+  .vol-hover-overlay .vol-social a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.18);
+    color: #fff;
+    font-size: 14px;
+    margin: 0 5px;
+    transition: background 0.2s, transform 0.2s;
+    text-decoration: none;
+  }
+  .vol-hover-overlay .vol-social a:hover {
+    background: rgba(255,255,255,0.36);
+    transform: scale(1.15);
+  }
+  .vol-hover-icon {
+    font-size: 28px;
+    color: rgba(255,255,255,0.9);
+    margin-bottom: 10px;
+  }
+
+  /* ── Info Area ── */
+  .vol-info {
+    padding: 18px 20px 20px;
+    background: #fff;
+  }
+  .vol-role-pill {
+    display: inline-block;
+    background: linear-gradient(90deg, #fce4ec, #fce4ec);
+    color: #d81b60;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    padding: 3px 11px;
+    border-radius: 20px;
+    margin-bottom: 8px;
+    font-family: 'Montserrat', sans-serif;
+  }
+  .vol-name {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: #0f172a;
+    margin: 0 0 6px;
+    line-height: 1.25;
+  }
+  .vol-divider {
+    width: 30px;
+    height: 2.5px;
+    background: linear-gradient(90deg, #d81b60, #ff6090);
+    border-radius: 2px;
+    margin-bottom: 10px;
+  }
+  .vol-status {
+    display: flex;
+    align-items: center;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    color: #64748b;
+    font-weight: 500;
+  }
+  .vol-status-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #22c55e;
+    margin-right: 7px;
+    flex-shrink: 0;
+    box-shadow: 0 0 0 2px rgba(34,197,94,0.25);
+    animation: pulse-dot 2s infinite;
+  }
+  @keyframes pulse-dot {
+    0%, 100% { box-shadow: 0 0 0 2px rgba(34,197,94,0.25); }
+    50%       { box-shadow: 0 0 0 5px rgba(34,197,94,0.12); }
+  }
+
+  /* ── Entrance Animation ── */
+  .vol-card-wrap {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  .vol-card-wrap.vol-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ── Hide filtered cards ── */
+  .vol-card-wrap.vol-hidden {
+    display: none;
+  }
+
+  /* ── Section Heading tweak ── */
+  .volunteer-section .subheading {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #d81b60;
+    display: block;
+    margin-bottom: 8px;
+  }
+  .volunteer-section h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 32px;
+    font-weight: 800;
+    color: #0f172a;
+  }
+</style>
+
+<section class="volunteer-section">
   <div class="container">
-    <div class="row pb-5">
-      <div class="col-md-10 heading-section text-left ftco-animate">
-        <span class="subheading">Volunteer</span>
-        <h2>Our Active Campaign Leaders</h2>
-      </div>
-    </div>
-    
-    <!-- Volunteer ID Search Section -->
-    <div class="row justify-content-center mb-5">
-      <div class="col-md-6 text-center">
-        <div class="form-group d-flex" style="box-shadow: 0px 5px 20px -5px rgba(0,0,0,0.1); border-radius: 30px; overflow: hidden; border: 1px solid #ddd; background: #fff;">
-          <input type="text" id="volunteer-search-input" class="form-control" placeholder="Search by Volunteer ID (e.g., 1, 2, 10...)" style="border: none; border-radius: 0; padding-left: 25px; height: 50px; font-family: 'Montserrat', sans-serif;">
-          <button id="volunteer-search-btn" class="btn btn-secondary px-4" style="border-radius: 0; border: none;"><span class="fa fa-search"></span></button>
-        </div>
-        <div id="no-volunteer-msg" class="text-danger mt-3" style="display: none; font-weight: 600; font-family: 'Montserrat', sans-serif;">No volunteer found with this ID.</div>
+    <!-- Heading -->
+    <div class="row pb-4">
+      <div class="col-md-10 ftco-animate">
+        <span class="subheading">Our People</span>
+        <h2>Active Campaign Leaders</h2>
       </div>
     </div>
 
-    <div class="row">
-      <div class="col-md-6 col-lg-3 volunteer-card" data-id="1">
-        <div class="volunteer">
-          <div class="img" style="background-image: url(images/team-1.jpg);"></div>
-          <div class="text text-1">
-            <h3>Dr. Ramesh Vyas</h3>
-            <span>Food Safety Analyst</span>
-            <p class="mt-2 mb-0" style="font-size: 13px; font-weight: 700; color: #d81b60;">Volunteer ID: 1</p>
-          </div>
+    <!-- Search -->
+    <div class="row justify-content-center mb-5">
+      <div class="col-md-6">
+        <div class="vol-search-wrap">
+          <input type="text" id="volunteer-search-input" placeholder="Search by Volunteer ID (e.g. 1, 10, 22…)">
+          <button id="volunteer-search-btn"><span class="fa fa-search"></span></button>
         </div>
-      </div>
-      <div class="col-md-6 col-lg-3 volunteer-card" data-id="2">
-        <div class="volunteer">
-          <div class="img" style="background-image: url(images/team-2.jpg);"></div>
-          <div class="text text-2">
-            <h3>Amit Patel</h3>
-            <span>Outreach Coordinator</span>
-            <p class="mt-2 mb-0" style="font-size: 13px; font-weight: 700; color: #d81b60;">Volunteer ID: 2</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6 col-lg-3 volunteer-card" data-id="10">
-        <div class="volunteer">
-          <div class="img" style="background-image: url(images/team-3.jpg);"></div>
-          <div class="text text-3">
-            <h3>Ketan Shah</h3>
-            <span>Legal Advisor</span>
-            <p class="mt-2 mb-0" style="font-size: 13px; font-weight: 700; color: #d81b60;">Volunteer ID: 10</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6 col-lg-3 volunteer-card" data-id="11">
-        <div class="volunteer">
-          <div class="img" style="background-image: url(images/team-4.jpg);"></div>
-          <div class="text text-4">
-            <h3>Nisha Mehta</h3>
-            <span>Volunteer Lead</span>
-            <p class="mt-2 mb-0" style="font-size: 13px; font-weight: 700; color: #d81b60;">Volunteer ID: 11</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6 col-lg-3 volunteer-card" data-id="12">
-        <div class="volunteer">
-          <div class="img" style="background-image: url(images/team-5.jpg);"></div>
-          <div class="text text-4">
-            <h3>Sanjay Rawal</h3>
-            <span>Field Inspector</span>
-            <p class="mt-2 mb-0" style="font-size: 13px; font-weight: 700; color: #d81b60;">Volunteer ID: 12</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6 col-lg-3 volunteer-card" data-id="20">
-        <div class="volunteer">
-          <div class="img" style="background-image: url(images/team-6.jpg);"></div>
-          <div class="text text-1">
-            <h3>Preeti Desai</h3>
-            <span>Testing Trainer</span>
-            <p class="mt-2 mb-0" style="font-size: 13px; font-weight: 700; color: #d81b60;">Volunteer ID: 20</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6 col-lg-3 volunteer-card" data-id="22">
-        <div class="volunteer">
-          <div class="img" style="background-image: url(images/team-7.jpg);"></div>
-          <div class="text text-2">
-            <h3>Vikram Solanki</h3>
-            <span>Outreach Lead</span>
-            <p class="mt-2 mb-0" style="font-size: 13px; font-weight: 700; color: #d81b60;">Volunteer ID: 22</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6 col-lg-3 volunteer-card" data-id="25">
-        <div class="volunteer">
-          <div class="img" style="background-image: url(images/team-8.jpg);"></div>
-          <div class="text text-3">
-            <h3>Anjali Sharma</h3>
-            <span>Public Relations</span>
-            <p class="mt-2 mb-0" style="font-size: 13px; font-weight: 700; color: #d81b60;">Volunteer ID: 25</p>
-          </div>
+        <div id="no-volunteer-msg" style="display:none; text-align:center; margin-top:12px; font-family:'Montserrat',sans-serif; font-size:13px; font-weight:600; color:#d81b60;">
+          <span class="fa fa-exclamation-circle mr-1"></span> No volunteer found with this ID.
         </div>
       </div>
     </div>
+
+    <!-- Cards Grid -->
+    <div class="vol-grid" id="vol-grid">
+
+      <!-- Card 1 -->
+      <div class="vol-card-wrap volunteer-card" data-id="1">
+        <div class="vol-card">
+          <div class="vol-photo" style="background-image: url(images/team-1.jpg);">
+            <span class="vol-id-badge">ID: 01</span>
+            <div class="vol-hover-overlay">
+              <span class="fa fa-user vol-hover-icon"></span>
+              <div class="vol-social">
+                <a href="#" title="LinkedIn"><span class="fa fa-linkedin"></span></a>
+                <a href="#" title="WhatsApp"><span class="fa fa-whatsapp"></span></a>
+              </div>
+            </div>
+          </div>
+          <div class="vol-info">
+            <span class="vol-role-pill">Food Safety Analyst</span>
+            <h4 class="vol-name">Dr. Ramesh Vyas</h4>
+            <div class="vol-divider"></div>
+            <div class="vol-status">
+              <span class="vol-status-dot"></span> Active Volunteer
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="vol-card-wrap volunteer-card" data-id="2">
+        <div class="vol-card">
+          <div class="vol-photo" style="background-image: url(images/team-2.jpg);">
+            <span class="vol-id-badge">ID: 02</span>
+            <div class="vol-hover-overlay">
+              <span class="fa fa-user vol-hover-icon"></span>
+              <div class="vol-social">
+                <a href="#"><span class="fa fa-linkedin"></span></a>
+                <a href="#"><span class="fa fa-whatsapp"></span></a>
+              </div>
+            </div>
+          </div>
+          <div class="vol-info">
+            <span class="vol-role-pill">Outreach Coordinator</span>
+            <h4 class="vol-name">Amit Patel</h4>
+            <div class="vol-divider"></div>
+            <div class="vol-status"><span class="vol-status-dot"></span> Active Volunteer</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="vol-card-wrap volunteer-card" data-id="10">
+        <div class="vol-card">
+          <div class="vol-photo" style="background-image: url(images/team-3.jpg);">
+            <span class="vol-id-badge">ID: 10</span>
+            <div class="vol-hover-overlay">
+              <span class="fa fa-user vol-hover-icon"></span>
+              <div class="vol-social">
+                <a href="#"><span class="fa fa-linkedin"></span></a>
+                <a href="#"><span class="fa fa-whatsapp"></span></a>
+              </div>
+            </div>
+          </div>
+          <div class="vol-info">
+            <span class="vol-role-pill">Legal Advisor</span>
+            <h4 class="vol-name">Ketan Shah</h4>
+            <div class="vol-divider"></div>
+            <div class="vol-status"><span class="vol-status-dot"></span> Active Volunteer</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="vol-card-wrap volunteer-card" data-id="11">
+        <div class="vol-card">
+          <div class="vol-photo" style="background-image: url(images/team-4.jpg);">
+            <span class="vol-id-badge">ID: 11</span>
+            <div class="vol-hover-overlay">
+              <span class="fa fa-user vol-hover-icon"></span>
+              <div class="vol-social">
+                <a href="#"><span class="fa fa-linkedin"></span></a>
+                <a href="#"><span class="fa fa-whatsapp"></span></a>
+              </div>
+            </div>
+          </div>
+          <div class="vol-info">
+            <span class="vol-role-pill">Volunteer Lead</span>
+            <h4 class="vol-name">Nisha Mehta</h4>
+            <div class="vol-divider"></div>
+            <div class="vol-status"><span class="vol-status-dot"></span> Active Volunteer</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="vol-card-wrap volunteer-card" data-id="12">
+        <div class="vol-card">
+          <div class="vol-photo" style="background-image: url(images/team-5.jpg);">
+            <span class="vol-id-badge">ID: 12</span>
+            <div class="vol-hover-overlay">
+              <span class="fa fa-user vol-hover-icon"></span>
+              <div class="vol-social">
+                <a href="#"><span class="fa fa-linkedin"></span></a>
+                <a href="#"><span class="fa fa-whatsapp"></span></a>
+              </div>
+            </div>
+          </div>
+          <div class="vol-info">
+            <span class="vol-role-pill">Field Inspector</span>
+            <h4 class="vol-name">Sanjay Rawal</h4>
+            <div class="vol-divider"></div>
+            <div class="vol-status"><span class="vol-status-dot"></span> Active Volunteer</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 6 -->
+      <div class="vol-card-wrap volunteer-card" data-id="20">
+        <div class="vol-card">
+          <div class="vol-photo" style="background-image: url(images/team-6.jpg);">
+            <span class="vol-id-badge">ID: 20</span>
+            <div class="vol-hover-overlay">
+              <span class="fa fa-user vol-hover-icon"></span>
+              <div class="vol-social">
+                <a href="#"><span class="fa fa-linkedin"></span></a>
+                <a href="#"><span class="fa fa-whatsapp"></span></a>
+              </div>
+            </div>
+          </div>
+          <div class="vol-info">
+            <span class="vol-role-pill">Testing Trainer</span>
+            <h4 class="vol-name">Preeti Desai</h4>
+            <div class="vol-divider"></div>
+            <div class="vol-status"><span class="vol-status-dot"></span> Active Volunteer</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 7 -->
+      <div class="vol-card-wrap volunteer-card" data-id="22">
+        <div class="vol-card">
+          <div class="vol-photo" style="background-image: url(images/team-7.jpg);">
+            <span class="vol-id-badge">ID: 22</span>
+            <div class="vol-hover-overlay">
+              <span class="fa fa-user vol-hover-icon"></span>
+              <div class="vol-social">
+                <a href="#"><span class="fa fa-linkedin"></span></a>
+                <a href="#"><span class="fa fa-whatsapp"></span></a>
+              </div>
+            </div>
+          </div>
+          <div class="vol-info">
+            <span class="vol-role-pill">Outreach Lead</span>
+            <h4 class="vol-name">Vikram Solanki</h4>
+            <div class="vol-divider"></div>
+            <div class="vol-status"><span class="vol-status-dot"></span> Active Volunteer</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 8 -->
+      <div class="vol-card-wrap volunteer-card" data-id="25">
+        <div class="vol-card">
+          <div class="vol-photo" style="background-image: url(images/team-8.jpg);">
+            <span class="vol-id-badge">ID: 25</span>
+            <div class="vol-hover-overlay">
+              <span class="fa fa-user vol-hover-icon"></span>
+              <div class="vol-social">
+                <a href="#"><span class="fa fa-linkedin"></span></a>
+                <a href="#"><span class="fa fa-whatsapp"></span></a>
+              </div>
+            </div>
+          </div>
+          <div class="vol-info">
+            <span class="vol-role-pill">Public Relations</span>
+            <h4 class="vol-name">Anjali Sharma</h4>
+            <div class="vol-divider"></div>
+            <div class="vol-status"><span class="vol-status-dot"></span> Active Volunteer</div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /.vol-grid -->
   </div>
 </section>
 
@@ -245,43 +590,53 @@
   <script src="js/main.js"></script>
   
   <script>
-    $(document).ready(function() {
-      function filterVolunteers() {
-        var query = $('#volunteer-search-input').val().trim();
-        var found = false;
-        
-        if (query === "") {
-          $('.volunteer-card').show();
-          $('#no-volunteer-msg').hide();
-          return;
-        }
-        
-        $('.volunteer-card').each(function() {
-          var cardId = $(this).attr('data-id');
-          if (cardId === query) {
-            $(this).show();
-            found = true;
-          } else {
-            $(this).hide();
-          }
-        });
-        
-        if (found) {
-          $('#no-volunteer-msg').hide();
+    // ── Search filter ──
+    function filterVolunteers() {
+      var query = document.getElementById('volunteer-search-input').value.trim();
+      var found = false;
+      document.querySelectorAll('.volunteer-card').forEach(function(card) {
+        if (query === '') {
+          card.classList.remove('vol-hidden');
+          found = true;
+        } else if (card.getAttribute('data-id') === query) {
+          card.classList.remove('vol-hidden');
+          found = true;
         } else {
-          $('#no-volunteer-msg').show();
+          card.classList.add('vol-hidden');
         }
-      }
-
-      $('#volunteer-search-btn').on('click', function(e) {
-        e.preventDefault();
-        filterVolunteers();
       });
+      document.getElementById('no-volunteer-msg').style.display =
+        (query !== '' && !found) ? 'block' : 'none';
+    }
 
-      $('#volunteer-search-input').on('keyup', function(e) {
-        filterVolunteers();
-      });
+    document.getElementById('volunteer-search-btn').addEventListener('click', function(e) {
+      e.preventDefault();
+      filterVolunteers();
     });
+    document.getElementById('volunteer-search-input').addEventListener('keyup', filterVolunteers);
+
+    // ── Staggered entrance animation ──
+    (function() {
+      var cards = document.querySelectorAll('.vol-card-wrap');
+      if ('IntersectionObserver' in window) {
+        var observer = new IntersectionObserver(function(entries) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+              // slight delay per card index
+              var idx = Array.from(cards).indexOf(entry.target);
+              setTimeout(function() {
+                entry.target.classList.add('vol-visible');
+              }, idx * 80);
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.1 });
+        cards.forEach(function(card) { observer.observe(card); });
+      } else {
+        // Fallback — show all immediately
+        cards.forEach(function(card) { card.classList.add('vol-visible'); });
+      }
+    })();
   </script>
 
 </body>

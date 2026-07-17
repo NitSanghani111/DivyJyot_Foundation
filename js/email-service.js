@@ -195,7 +195,7 @@ async function setupContactForm() {
       from_email: emailEl.value,
       subject: subjectEl.value,
       message: messageEl.value,
-      to_email: 'contact@divyjyotgujarat.org'
+      to_email: 'info@divyjyotfoundation.com'
     };
     
     try {
@@ -293,7 +293,7 @@ async function setupVolunteerForm() {
       city: cityEl.value,
       contribution_area: areaEl.value,
       message: messageEl.value || "None",
-      to_email: 'contact@divyjyotgujarat.org'
+      to_email: 'info@divyjyotfoundation.com'
     };
     
     try {
@@ -327,11 +327,25 @@ async function setupVolunteerForm() {
 // 3. DONATE INTEREST FORM SUBMISSION
 // --------------------------------------------------------------------------
 // --------------------------------------------------------------------------
-// 3. DONATE INTEREST FORM SUBMISSION
-// --------------------------------------------------------------------------
 async function setupDonateForm(formId = "donate-form") {
   const form = document.getElementById(formId);
   if (!form) return;
+
+  const fileInput = form.querySelector("[name='payment_screenshot']");
+  const submitBtn = form.querySelector("[type='submit']");
+
+  // Enable/Disable submit button based on screenshot upload
+  if (fileInput && submitBtn) {
+    fileInput.addEventListener("change", function() {
+      if (fileInput.files && fileInput.files[0]) {
+        submitBtn.removeAttribute("disabled");
+        setFieldValidation(fileInput, true);
+      } else {
+        submitBtn.setAttribute("disabled", "true");
+        setFieldValidation(fileInput, false, "Please upload a proof of payment screenshot");
+      }
+    });
+  }
 
   form.addEventListener("submit", async function(e) {
     e.preventDefault();
@@ -341,8 +355,6 @@ async function setupDonateForm(formId = "donate-form") {
     const phoneEl = form.querySelector("[name='phone']");
     const initiativeEl = form.querySelector("[name='initiative']");
     const amountEl = form.querySelector("[name='amount']");
-    const paymentMethodEl = form.querySelector("[name='payment-method']") || form.querySelector("[name='payment-method']:checked");
-    const submitBtn = form.querySelector("[type='submit']");
     
     let isFormValid = true;
     
@@ -386,20 +398,44 @@ async function setupDonateForm(formId = "donate-form") {
     } else {
       setFieldValidation(amountEl, true);
     }
+
+    // Validate Payment Screenshot File
+    const file = fileInput ? fileInput.files[0] : null;
+    if (!file) {
+      setFieldValidation(fileInput, false, "Please upload a proof of payment screenshot");
+      isFormValid = false;
+    } else {
+      setFieldValidation(fileInput, true);
+    }
     
     if (!isFormValid) return;
     
-    const originalText = submitBtn.value || submitBtn.innerText || "Support Campaign";
+    const originalText = submitBtn.value || submitBtn.innerText || "Submit Donation Details";
     setButtonLoading(submitBtn, true, originalText);
     
+    // Convert file to Base64
+    let screenshotBase64 = "";
+    if (file) {
+      try {
+        screenshotBase64 = await new Promise((resolve, reject) => {
+          const reader = new FileReader();
+          reader.readAsDataURL(file);
+          reader.onload = () => resolve(reader.result);
+          reader.onerror = error => reject(error);
+        });
+      } catch (err) {
+        console.error("Error reading payment screenshot file:", err);
+      }
+    }
+
     const templateParams = {
       from_name: nameEl.value,
       from_email: emailEl.value,
       phone: phoneEl.value,
       initiative: initiativeEl.value,
       amount: amountEl.value,
-      payment_method: paymentMethodEl ? paymentMethodEl.value || "Specified" : "UPI/Card",
-      to_email: 'contact@divyjyotgujarat.org'
+      payment_screenshot: screenshotBase64,
+      to_email: 'info@divyjyotfoundation.com'
     };
     
     try {
@@ -416,8 +452,9 @@ async function setupDonateForm(formId = "donate-form") {
         console.log("SIMULATION SUCCESS - Donation Form Parameters:", templateParams);
       }
       
-      showFormAlert(form, "success", "Donation details submitted successfully! A representative from Divy Jyot Foundation will contact you shortly with UPI/Bank Details to complete your contribution of ₹" + amountEl.value + ".");
+      showFormAlert(form, "success", "Donation details and proof of payment submitted successfully! Thank you for supporting Divy Jyot Foundation. A confirmation email has been sent to " + emailEl.value + ".");
       form.reset();
+      if (submitBtn) submitBtn.setAttribute("disabled", "true");
       
       form.querySelectorAll(".form-control").forEach(el => el.classList.remove("is-valid"));
     } catch (err) {
