@@ -22,78 +22,98 @@
   <!-- Dynamic Header loaded by js/components.js -->
   <div id="header-placeholder"></div>
 
-  <section class="hero-wrap hero-wrap-2" style="background-image: url('images/bg_3.jpg');" data-stellar-background-ratio="0.5">
-    <div class="overlay"></div>
-    <div class="container">
-      <div class="row no-gutters slider-text align-items-end">
-        <div class="col-md-9 ftco-animate pb-5">
-          <p class="breadcrumbs mb-2">
-            <span class="mr-2"><a href="index.html">Home <i class="fa fa-chevron-right" style="font-size: 10px;"></i></a></span> 
-            <span>Services <i class="fa fa-chevron-right" style="font-size: 10px;"></i></span>
+  <section class="hero-wrap hero-wrap-2 d-flex align-items-center justify-content-center" style="background-image: url('images/bg_3.jpg'); min-height: 480px; position: relative;" data-stellar-background-ratio="0.5">
+    <div class="overlay" style="background: rgba(11, 19, 43, 0.85); z-index: 1;"></div>
+    <div class="container" style="position: relative; z-index: 10;">
+      <div class="row no-gutters slider-text align-items-center justify-content-center">
+        <div class="col-md-10 text-center ftco-animate pb-5 about-hero-content">
+          <p class="breadcrumbs mb-2" style="font-weight: 600; text-transform: uppercase; font-size: 13px; letter-spacing: 2px;">
+            <span class="mr-2"><a href="index.html" style="color: rgba(255,255,255,0.7);">Home <i class="fa fa-chevron-right" style="font-size: 9px; margin-left: 5px;"></i></a></span> 
+            <span style="color: var(--accent-magenta);">Services</span>
           </p>
-          <h1 class="mb-0 bread">Our Services</h1>
+          <h1 class="mb-3 bread font-weight-bold" style="color: #fff; font-size: 44px; text-transform: uppercase; letter-spacing: 1px;">Our Services</h1>
+          <div class="about-hero-divider mx-auto"></div>
+          <p class="lead text-white-50 mb-0 mx-auto" style="max-width: 700px; font-size: 18px; line-height: 1.6;">
+            Providing professional support, regulatory guides, and practical testing to build a healthier food environment.
+          </p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Section: Services Details -->
-  <section class="ftco-section bg-light">
+  <section class="ftco-section bg-light" style="padding: 7em 0 5em 0;">
     <div class="container">
-      <div class="row pb-5 mb-2">
-        <div class="col-md-10 heading-section text-left ftco-animate">
-          <span class="subheading">What We Do</span>
-          <h2>Empowering Consumers & Businesses</h2>
-          <p style="color: var(--text-muted);">We work to create a highly alert consumer community and support food business compliance for a healthier Gujarat.</p>
+      <div class="row justify-content-center pb-5">
+        <div class="col-md-10 heading-section text-center ftco-animate">
+          <span class="subheading" style="color: var(--accent-magenta); text-transform: uppercase; font-weight: 700; letter-spacing: 2px; font-size: 13px; display: block; margin-bottom: 8px;">What We Do</span>
+          <h2 class="mb-2 font-weight-bold" style="color: var(--primary-navy); font-size: 34px; line-height: 1.2;">Empowering Consumers & Businesses</h2>
+          <p class="text-muted mb-0" style="font-size: 15px; max-width: 650px; margin: 0 auto;">We work to create a highly alert consumer community and support food business compliance for a healthier Gujarat.</p>
         </div>
       </div>
       
       <div class="row">
-        <!-- Service 1 -->
-        <div class="col-md-6 col-lg-3 d-flex align-items-stretch ftco-animate">
-          <div class="services text-center bg-white p-4 rounded shadow-sm border border-light">
-            <div class="icon d-flex align-items-center justify-content-center bg-primary text-white rounded-circle mx-auto mb-4" style="width:70px; height:70px; font-size:32px;">
-              <span class="flaticon-volunteer"></span>
+        <!-- Service Card 1 -->
+        <div class="col-md-6 col-lg-3 mb-4 mb-lg-0">
+          <div class="services-card-wrap">
+            <div class="card-img" style="background-image: url('images/causes-1.jpg');">
+              <div class="card-icon" style="background: var(--accent-magenta) !important;">
+                <span class="fa fa-bullhorn"></span>
+              </div>
             </div>
-            <h3 class="mb-3 text-secondary" style="font-size: 18px;">Complaint Assistance</h3>
-            <p style="font-size: 14px; color:#64748b;">Guiding consumers on how to file formal food complaints with the Food Safety and Standards Authority of India (FSSAI) and local municipalities.</p>
-            <p class="mt-3"><a href="contact.html" class="btn btn-outline-primary px-3 py-2 btn-sm">Get Help</a></p>
+            <div class="card-body">
+              <h3>Complaint Assistance</h3>
+              <p>Guiding consumers on how to file formal food safety complaints with the FSSAI and local municipalities.</p>
+              <p class="mt-4 mb-0"><a href="contact.html" class="btn btn-outline-magenta w-100 py-2" style="border-radius: 35px; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;">Get Help</a></p>
+            </div>
           </div>
         </div>
         
-        <!-- Service 2 -->
-        <div class="col-md-6 col-lg-3 d-flex align-items-stretch ftco-animate">
-          <div class="services text-center bg-white p-4 rounded shadow-sm border border-light">
-            <div class="icon d-flex align-items-center justify-content-center bg-primary text-white rounded-circle mx-auto mb-4" style="width:70px; height:70px; font-size:32px;">
-              <span class="flaticon-donation"></span>
+        <!-- Service Card 2 -->
+        <div class="col-md-6 col-lg-3 mb-4 mb-lg-0">
+          <div class="services-card-wrap">
+            <div class="card-img" style="background-image: url('images/causes-2.jpg');">
+              <div class="card-icon" style="background: var(--accent-magenta) !important;">
+                <span class="fa fa-balance-scale"></span>
+              </div>
             </div>
-            <h3 class="mb-3 text-secondary" style="font-size: 18px;">Regulatory Compliance</h3>
-            <p style="font-size: 14px; color:#64748b;">Educating food manufacturers, traders, and street vendors about FSSAI standards, licensing rules, hygiene norms, and sanitation protocols.</p>
-            <p class="mt-3"><a href="contact.html" class="btn btn-outline-primary px-3 py-2 btn-sm">Consultation</a></p>
+            <div class="card-body">
+              <h3>Regulatory Compliance</h3>
+              <p>Educating food manufacturers, traders, and street vendors about FSSAI standards and sanitation norms.</p>
+              <p class="mt-4 mb-0"><a href="contact.html" class="btn btn-outline-magenta w-100 py-2" style="border-radius: 35px; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;">Consultation</a></p>
+            </div>
           </div>
         </div>
         
-        <!-- Service 3 -->
-        <div class="col-md-6 col-lg-3 d-flex align-items-stretch ftco-animate">
-          <div class="services text-center bg-white p-4 rounded shadow-sm border border-light">
-            <div class="icon d-flex align-items-center justify-content-center bg-primary text-white rounded-circle mx-auto mb-4" style="width:70px; height:70px; font-size:32px;">
-              <span class="flaticon-ecological"></span>
+        <!-- Service Card 3 -->
+        <div class="col-md-6 col-lg-3 mb-4 mb-md-0">
+          <div class="services-card-wrap">
+            <div class="card-img" style="background-image: url('images/causes-3.jpg');">
+              <div class="card-icon" style="background: var(--accent-magenta) !important;">
+                <span class="fa fa-flask"></span>
+              </div>
             </div>
-            <h3 class="mb-3 text-secondary" style="font-size: 18px;">Testing Workshops</h3>
-            <p style="font-size: 14px; color:#64748b;">Conducting live demonstration workshops showing simple household tests to detect adulterants in milk, ghee, cooking oil, spices, and honey.</p>
-            <p class="mt-3"><a href="volunteer.html" class="btn btn-outline-primary px-3 py-2 btn-sm">Join Class</a></p>
+            <div class="card-body">
+              <h3>Testing Workshops</h3>
+              <p>Conducting live demonstration workshops showing simple household tests to detect adulterated items.</p>
+              <p class="mt-4 mb-0"><a href="volunteer.html" class="btn btn-outline-magenta w-100 py-2" style="border-radius: 35px; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;">Join Class</a></p>
+            </div>
           </div>
         </div>
         
-        <!-- Service 4 -->
-        <div class="col-md-6 col-lg-3 d-flex align-items-stretch ftco-animate">
-          <div class="services text-center bg-white p-4 rounded shadow-sm border border-light">
-            <div class="icon d-flex align-items-center justify-content-center bg-primary text-white rounded-circle mx-auto mb-4" style="width:70px; height:70px; font-size:32px;">
-              <span class="flaticon-piggy-bank"></span>
+        <!-- Service Card 4 -->
+        <div class="col-md-6 col-lg-3">
+          <div class="services-card-wrap">
+            <div class="card-img" style="background-image: url('images/causes-4.jpg');">
+              <div class="card-icon" style="background: var(--accent-magenta) !important;">
+                <span class="fa fa-gavel"></span>
+              </div>
             </div>
-            <h3 class="mb-3 text-secondary" style="font-size: 18px;">Legal Guidance</h3>
-            <p style="font-size: 14px; color:#64748b;">Providing regulatory advisory, counseling, and legal support for consumers seeking compensation for damages due to adulterated food items.</p>
-            <p class="mt-3"><a href="contact.html" class="btn btn-outline-primary px-3 py-2 btn-sm">Legal Desk</a></p>
+            <div class="card-body">
+              <h3>Legal Guidance</h3>
+              <p>Providing regulatory advisory, counseling, and legal support for consumers seeking safety claims.</p>
+              <p class="mt-4 mb-0"><a href="contact.html" class="btn btn-outline-magenta w-100 py-2" style="border-radius: 35px; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;">Legal Desk</a></p>
+            </div>
           </div>
         </div>
       </div>
@@ -101,28 +121,37 @@
   </section>
 
   <!-- Detailed Service Description -->
-  <section class="ftco-section">
+  <section class="ftco-section bg-white" style="padding: 7em 0;">
     <div class="container">
       <div class="row align-items-center">
         <div class="col-md-6 ftco-animate mb-5 mb-md-0">
-          <img src="images/services-1.jpg" alt="Food safety checks" class="img-fluid rounded shadow">
+          <img src="images/services-1.jpg" alt="Food safety checks" class="img-fluid rounded shadow-lg" style="border-radius: 16px !important; border: 8px solid rgba(27, 46, 83, 0.03);">
         </div>
         <div class="col-md-6 pl-md-5 ftco-animate">
-          <span class="subheading">Consumer Empowerment</span>
-          <h2 class="mb-4">Food Safety Complaint Helpline</h2>
-          <p class="mb-4">Have you purchased or consumed food that appears to be adulterated, stale, or contaminated? As a consumer, you have the legal right to safety and representation. Divy Jyot Foundation is here to support you at every stage of the grievance process.</p>
+          <span class="subheading" style="color: var(--accent-magenta); text-transform: uppercase; font-weight: 700; letter-spacing: 2px; font-size: 13px;">Consumer Empowerment</span>
+          <h2 class="mb-4 font-weight-bold" style="color: var(--primary-navy); font-size: 34px; line-height: 1.2;">Food Safety Complaint Helpline</h2>
+          <p class="mb-4" style="font-size: 15px; color: var(--text-muted); line-height: 1.7;">Have you purchased or consumed food that appears to be adulterated, stale, or contaminated? As a consumer, you have the legal right to safety and representation. Divy Jyot Foundation is here to support you at every stage of the grievance process.</p>
           
-          <div class="card p-4 mb-4 border-0 shadow-sm" style="border-left: 5px solid var(--accent-magenta) !important; background: #fafbfc;">
-            <h5 class="text-secondary mb-2"><span class="fa fa-phone mr-2" style="color:var(--accent-magenta);"></span> Food Safety Helpline</h5>
+          <div class="card p-4 mb-4 border-0 shadow-sm" style="border-left: 5px solid var(--accent-magenta) !important; background: #ffffff; border-radius: 12px; box-shadow: 0 10px 30px rgba(27, 46, 83, 0.03) !important;">
+            <h5 class="font-weight-bold mb-2" style="color: var(--primary-navy); font-size: 15px;"><span class="fa fa-phone mr-2" style="color:var(--accent-magenta);"></span> Food Safety Helpline</h5>
             <p class="mb-0 font-weight-bold" style="font-size: 24px; color: var(--primary-navy);">+91 87805 18680</p>
             <p class="mb-0 text-muted" style="font-size: 13px;">Call us for immediate counseling and complaint registration support.</p>
           </div>
           
-          <h4 class="mb-3 text-secondary" style="font-size: 18px;">How the Complaint Support Process Works:</h4>
-          <ul class="pl-0" style="list-style: none;">
-            <li class="mb-2"><span class="fa fa-check mr-2 text-primary"></span> <b>Verify:</b> Guidance on doing preliminary checks of the suspected food sample.</li>
-            <li class="mb-2"><span class="fa fa-check mr-2 text-primary"></span> <b>Report:</b> Drafting and filing official complaints to FSSAI (FoSCoS portal) or Local Health Officers.</li>
-            <li class="mb-2"><span class="fa fa-check mr-2 text-primary"></span> <b>Escalate:</b> Approaching district consumer courts in cases of severe contamination or health injuries.</li>
+          <h4 class="mb-3 font-weight-bold" style="font-size: 18px; color: var(--primary-navy);">How the Complaint Support Process Works:</h4>
+          <ul class="pl-0 mt-3" style="list-style: none;">
+            <li class="d-flex mb-3">
+              <span class="fa fa-check mr-3 mt-1" style="color: var(--accent-magenta); font-size: 16px;"></span>
+              <span style="font-size: 14.5px; color: var(--text-muted);"><b style="color: var(--primary-navy);">Verify:</b> Guidance on doing preliminary checks of the suspected food sample.</span>
+            </li>
+            <li class="d-flex mb-3">
+              <span class="fa fa-check mr-3 mt-1" style="color: var(--accent-magenta); font-size: 16px;"></span>
+              <span style="font-size: 14.5px; color: var(--text-muted);"><b style="color: var(--primary-navy);">Report:</b> Drafting and filing official complaints to FSSAI (FoSCoS portal) or Local Health Officers.</span>
+            </li>
+            <li class="d-flex">
+              <span class="fa fa-check mr-3 mt-1" style="color: var(--accent-magenta); font-size: 16px;"></span>
+              <span style="font-size: 14.5px; color: var(--text-muted);"><b style="color: var(--primary-navy);">Escalate:</b> Approaching district consumer courts in cases of severe contamination or health injuries.</span>
+            </li>
           </ul>
         </div>
       </div>
@@ -130,50 +159,50 @@
   </section>
 
   <!-- FSSAI Compliance Section for Food Business Operators (FBO) -->
-  <section class="ftco-section bg-light">
+  <section class="ftco-section bg-light" style="padding: 7em 0;">
     <div class="container">
       <div class="row align-items-center">
         <div class="col-md-6 pr-md-5 ftco-animate order-2 order-md-1">
-          <span class="subheading">Business Compliance</span>
-          <h2 class="mb-4">FSSAI Rules & Hygiene Advisory</h2>
-          <p class="mb-4">We believe food safety is a shared responsibility. We support small food operators, retailers, and restaurants in understanding food hygiene regulations to prevent accidental contamination.</p>
+          <span class="subheading" style="color: var(--accent-magenta); text-transform: uppercase; font-weight: 700; letter-spacing: 2px; font-size: 13px;">Business Compliance</span>
+          <h2 class="mb-4 font-weight-bold" style="color: var(--primary-navy); font-size: 34px; line-height: 1.2;">FSSAI Rules & Hygiene Advisory</h2>
+          <p class="mb-4" style="font-size: 15px; color: var(--text-muted); line-height: 1.7;">We believe food safety is a shared responsibility. We support small food operators, retailers, and restaurants in understanding food hygiene regulations to prevent accidental contamination.</p>
           
-          <div class="row mb-4">
+          <div class="row mb-4 mt-4">
             <div class="col-md-6 mb-3">
-              <div class="p-3 bg-white rounded shadow-xs border">
-                <h6 class="text-secondary font-weight-bold"><span class="fa fa-book mr-2 text-primary"></span> FSSAI Licensing</h6>
-                <p class="mb-0 text-muted" style="font-size:13px;">Guidance on getting licenses and registration based on annual turnover.</p>
+              <div class="p-4 bg-white rounded shadow-sm border" style="border-radius: 12px !important; border: 1px solid rgba(27, 46, 83, 0.05) !important; box-shadow: 0 8px 20px rgba(27, 46, 83, 0.02) !important;">
+                <h6 class="font-weight-bold mb-2" style="color: var(--primary-navy);"><span class="fa fa-book mr-2" style="color: var(--accent-magenta);"></span> FSSAI Licensing</h6>
+                <p class="mb-0 text-muted" style="font-size:13px; line-height: 1.5;">Guidance on getting licenses and registration based on annual turnover.</p>
               </div>
             </div>
             <div class="col-md-6 mb-3">
-              <div class="p-3 bg-white rounded shadow-xs border">
-                <h6 class="text-secondary font-weight-bold"><span class="fa fa-tint mr-2 text-primary"></span> Hygiene standards</h6>
-                <p class="mb-0 text-muted" style="font-size:13px;">Training on Schedule 4 sanitation guidelines for kitchens and storefronts.</p>
+              <div class="p-4 bg-white rounded shadow-sm border" style="border-radius: 12px !important; border: 1px solid rgba(27, 46, 83, 0.05) !important; box-shadow: 0 8px 20px rgba(27, 46, 83, 0.02) !important;">
+                <h6 class="font-weight-bold mb-2" style="color: var(--primary-navy);"><span class="fa fa-tint mr-2" style="color: var(--accent-magenta);"></span> Hygiene Standards</h6>
+                <p class="mb-0 text-muted" style="font-size:13px; line-height: 1.5;">Training on Schedule 4 sanitation guidelines for kitchens and storefronts.</p>
               </div>
             </div>
           </div>
           
-          <p><a href="contact.html" class="btn btn-secondary px-4 py-3">Schedule a Consultation</a></p>
+          <p class="mt-4"><a href="contact.html" class="btn btn-outline-magenta py-3 px-4 font-weight-bold" style="border-radius: 35px; text-transform: uppercase; font-size: 13px; letter-spacing: 0.5px;">Schedule a Consultation</a></p>
         </div>
         <div class="col-md-6 mb-5 mb-md-0 order-1 order-md-2 ftco-animate">
-          <img src="images/services-2.jpg" alt="FSSAI hygiene checks" class="img-fluid rounded shadow">
+          <img src="images/services-2.jpg" alt="FSSAI hygiene checks" class="img-fluid rounded shadow-lg" style="border-radius: 16px !important; border: 8px solid rgba(27, 46, 83, 0.03);">
         </div>
       </div>
     </div>
   </section>
 
   <!-- CTA banner -->
-  <section class="ftco-hireme bg-secondary">
+  <section class="ftco-section text-white" style="background: var(--primary-navy) !important; padding: 5em 0;">
     <div class="container">
-      <div class="row justify-content-between">
+      <div class="row justify-content-between align-items-center">
         <div class="col-md-8 col-lg-8 d-flex align-items-center">
-          <div class="w-100 text-white">
-            <h2 class="text-white mb-2">Help Us Educate More Citizens in Gujarat</h2>
-            <p class="mb-0">Your support funds rapid testing kits, public seminars, and community workshops.</p>
+          <div class="w-100">
+            <h2 class="text-white font-weight-bold mb-2" style="font-size: 28px;">Help Us Educate More Citizens in Gujarat</h2>
+            <p class="mb-0 text-light" style="color: #cbd5e1 !important; font-size: 15px;">Your support funds rapid testing kits, public seminars, and community workshops.</p>
           </div>
         </div>
-        <div class="col-md-4 col-lg-4 d-flex align-items-center justify-content-end">
-          <p class="mb-0"><a href="donate.html" class="btn btn-primary py-3 px-4" style="border: 2px solid #fff !important;">Donate to Campaign</a></p>
+        <div class="col-md-4 col-lg-4 d-flex align-items-center justify-content-md-end mt-4 mt-md-0">
+          <p class="mb-0"><a href="donate.html" class="btn btn-outline-magenta py-3 px-4 font-weight-bold" style="border-radius: 30px; text-transform: uppercase; font-size: 12px; letter-spacing: 1px;">Donate to Campaign</a></p>
         </div>
       </div>
     </div>
