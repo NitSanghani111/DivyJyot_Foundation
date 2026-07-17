@@ -2,8 +2,8 @@
    Divy Jyot Foundation - Common UI Components (Dynamic Header & Footer)
    ========================================================================== */
 
-document.addEventListener("DOMContentLoaded", function() {
-  
+document.addEventListener("DOMContentLoaded", function () {
+
   // 1. DYNAMIC HEADER INJECTION
   const headerPlaceholder = document.getElementById("header-placeholder");
   if (headerPlaceholder) {
@@ -136,7 +136,7 @@ document.addEventListener("DOMContentLoaded", function() {
           <div class="row mt-5" style="border-top: 1px solid rgba(255,255,255,0.06); padding-top: 25px;">
             <div class="col-md-12 text-center">
               <p class="copyright" style="font-size: 13px; color: #64748b; margin-bottom:0;">
-                Copyright &copy; ${new Date().getFullYear()} All rights reserved | <b>Divy Jyot Foundation</b> | <span style="color:#cbd5e1; font-weight:600;">Regd. No. F/21350/GUJ/21766</span> | Template by Colorlib
+                Copyright &copy; ${new Date().getFullYear()} All rights reserved | <b>Divy Jyot Foundation</b> | <span style="color:#cbd5e1; font-weight:600;">Regd. No. F/21350/GUJ/21766</span> 
               </p>
             </div>
           </div>
@@ -148,7 +148,7 @@ document.addEventListener("DOMContentLoaded", function() {
   // 3. HIGHLIGHT THE ACTIVE NAVIGATION LINK
   const path = window.location.pathname;
   const page = path.split("/").pop();
-  
+
   // Clear any existing active classes
   const navItems = document.querySelectorAll("#ftco-navbar .navbar-nav .nav-item");
   navItems.forEach(item => item.classList.remove("active"));
