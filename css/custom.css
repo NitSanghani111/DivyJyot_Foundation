@@ -2075,3 +2075,604 @@ a:hover, a:focus {
     border-radius: 12px !important;
   }
 }
+
+/* ==========================================================================
+   Interactive Map Dashboard & Responsive Carousel Styling
+   ========================================================================== */
+
+.map-dashboard-container {
+  border-radius: 20px !important;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(27, 46, 83, 0.08) !important;
+  border: 1px solid rgba(27, 46, 83, 0.08) !important;
+  background: #ffffff;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.map-sidebar {
+  max-height: 550px;
+  overflow-y: auto;
+  border-right: 1px solid rgba(27, 46, 83, 0.06);
+  background: #ffffff;
+}
+
+/* Custom Scrollbar for Map Sidebar */
+.map-sidebar::-webkit-scrollbar {
+  width: 6px;
+}
+.map-sidebar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.map-sidebar::-webkit-scrollbar-thumb {
+  background: rgba(27, 46, 83, 0.1);
+  border-radius: 10px;
+}
+.map-sidebar::-webkit-scrollbar-thumb:hover {
+  background: rgba(27, 46, 83, 0.2);
+}
+
+.map-sidebar-header {
+  padding: 24px 20px;
+  background: #ffffff;
+  border-bottom: 1px solid rgba(27, 46, 83, 0.06);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.map-region-list {
+  padding: 15px;
+}
+
+.region-card-item {
+  background: #f8fafc;
+  border: 1px solid rgba(27, 46, 83, 0.04);
+  border-radius: 12px;
+  margin-bottom: 10px;
+  padding: 16px;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.region-card-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: var(--accent-magenta);
+  transform: scaleY(0);
+  transition: transform 0.3s ease;
+}
+
+.region-card-item:hover {
+  transform: translateY(-2px);
+  background: #ffffff;
+  box-shadow: 0 6px 15px rgba(27, 46, 83, 0.04);
+  border-color: rgba(216, 27, 96, 0.1);
+}
+
+.region-card-item:hover::before {
+  transform: scaleY(1);
+}
+
+.region-card-item.active-region {
+  background: rgba(216, 27, 96, 0.03);
+  border-color: rgba(216, 27, 96, 0.18);
+  box-shadow: 0 4px 12px rgba(216, 27, 96, 0.03);
+}
+
+.region-card-item.active-region::before {
+  transform: scaleY(1);
+  background: var(--accent-magenta);
+}
+
+.region-badge {
+  background: rgba(27, 46, 83, 0.05);
+  color: var(--primary-navy);
+  font-weight: 700;
+  font-size: 11px;
+  padding: 6px 12px;
+  border-radius: 20px;
+  transition: all 0.3s ease;
+}
+
+.region-card-item.active-region .region-badge {
+  background: var(--accent-magenta);
+  color: #ffffff;
+}
+
+/* Mobile Scrollable Regions Bar */
+.mobile-regions-carousel {
+  display: flex;
+  overflow-x: auto;
+  white-space: nowrap;
+  padding: 14px 16px;
+  background: #f8fafc;
+  border-bottom: 1px solid rgba(27, 46, 83, 0.06);
+  gap: 10px;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+.mobile-regions-carousel::-webkit-scrollbar {
+  display: none; /* Hide scrollbar for clean look */
+}
+
+.mobile-pill-btn {
+  display: inline-block;
+  padding: 8px 18px;
+  background: #ffffff;
+  border: 1px solid rgba(27, 46, 83, 0.08);
+  color: var(--text-muted);
+  font-weight: 600;
+  font-size: 13px;
+  border-radius: 30px;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+  outline: none;
+  user-select: none;
+}
+
+.mobile-pill-btn.active {
+  background: var(--accent-magenta) !important;
+  color: #ffffff !important;
+  border-color: var(--accent-magenta) !important;
+  box-shadow: 0 4px 12px rgba(216, 27, 96, 0.25) !important;
+}
+
+.mobile-pill-btn:hover:not(.active) {
+  background: #f1f5f9;
+  color: var(--primary-navy);
+}
+
+/* Floating overlay stats card on the map */
+.map-floating-overlay-card {
+  position: absolute;
+  bottom: 24px;
+  left: 24px;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 15px 35px rgba(27, 46, 83, 0.12);
+  width: calc(100% - 48px);
+  max-width: 300px;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@media (max-width: 991.98px) {
+  .map-floating-overlay-card {
+    bottom: 16px;
+    left: 50% !important;
+    transform: translateX(-50%) translateY(10px);
+    width: calc(100% - 32px);
+    max-width: 380px;
+  }
+}
+
+/* Custom styles for Leaflet elements */
+.leaflet-container {
+  font-family: var(--font-body) !important;
+}
+
+.leaflet-bar {
+  border: none !important;
+  box-shadow: 0 4px 12px rgba(27, 46, 83, 0.1) !important;
+}
+
+.leaflet-bar a {
+  background-color: #ffffff !important;
+  border-bottom: 1px solid rgba(27, 46, 83, 0.06) !important;
+  color: var(--primary-navy) !important;
+  transition: all 0.2s ease;
+  width: 32px !important;
+  height: 32px !important;
+  line-height: 32px !important;
+}
+
+.leaflet-bar a:first-child {
+  border-top-left-radius: 8px !important;
+  border-top-right-radius: 8px !important;
+}
+
+.leaflet-bar a:last-child {
+  border-bottom-left-radius: 8px !important;
+  border-bottom-right-radius: 8px !important;
+  border-bottom: none !important;
+}
+
+.leaflet-bar a:hover {
+  background-color: #f8fafc !important;
+  color: var(--accent-magenta) !important;
+}
+
+.close-info-btn:hover {
+  color: var(--accent-magenta) !important;
+}
+
+/* ==========================================================================
+   Typography Visibility Overrides (Ensuring readable text on dark backgrounds)
+   ========================================================================== */
+.hero-wrap h1, .hero-wrap h2, .hero-wrap h3, .hero-wrap h4,
+.bg-dark-navy h1, .bg-dark-navy h2, .bg-dark-navy h3,
+.final-cta-section h1, .final-cta-section h2, .final-cta-section h3,
+.about-counter-section h1, .about-counter-section h2, .about-counter-section h3,
+.footer h2.footer-heading, .footer p, .footer a:not(:hover),
+.mv-panel-navy h1, .mv-panel-navy h2, .mv-panel-navy h3, .mv-panel-navy h4,
+.text-white h1, .text-white h2, .text-white h3, .text-white h4,
+.text-light h1, .text-light h2, .text-light h3,
+.bg-primary h1, .bg-primary h2, .bg-primary h3,
+.bg-dark h1, .bg-dark h2, .bg-dark h3 {
+  color: #ffffff !important;
+}
+
+/* ==========================================================================
+   Cinema Overlay (Unifies background vignettes and ensures maximum contrast)
+   ========================================================================== */
+.owl-carousel.home-slider .slider-item .overlay-1,
+.owl-carousel.home-slider .slider-item .overlay-2,
+.owl-carousel.home-slider .slider-item .overlay-3,
+.owl-carousel.home-slider .slider-item .overlay-4 {
+  width: 100% !important;
+  left: 0 !important;
+  background: linear-gradient(135deg, rgba(11, 19, 43, 0.9) 0%, rgba(27, 46, 83, 0.6) 50%, rgba(15, 23, 42, 0.95) 100%) !important;
+  opacity: 0.9 !important;
+}
+
+/* ==========================================================================
+   Services Cards Design Polish
+   ========================================================================== */
+.services-card-wrap {
+  background: #ffffff;
+  border-radius: 16px !important;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(27, 46, 83, 0.03);
+  border: 1px solid rgba(27, 46, 83, 0.05);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  display: block;
+  height: 100%;
+  text-decoration: none !important;
+}
+
+.services-card-wrap:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(27, 46, 83, 0.08) !important;
+  border-color: rgba(14, 165, 233, 0.15) !important;
+}
+
+.services-card-wrap .card-img {
+  height: 200px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  transition: all 0.4s ease;
+}
+
+.services-card-wrap:hover .card-img {
+  transform: scale(1.03);
+}
+
+.services-card-wrap .card-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: var(--accent-magenta) !important;
+  color: #ffffff !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  position: absolute;
+  bottom: -25px;
+  left: 25px;
+  z-index: 2;
+  border: 3px solid #ffffff;
+  transition: all 0.4s ease;
+}
+
+.services-card-wrap:hover .card-icon {
+  background: var(--primary-navy) !important;
+  transform: rotate(10deg) scale(1.1);
+}
+
+.services-card-wrap .card-body {
+  padding: 40px 25px 25px 25px !important;
+}
+
+.services-card-wrap h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--primary-navy) !important;
+  margin-bottom: 12px;
+}
+
+.services-card-wrap p {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* ==========================================================================
+   Causes Cards Design Polish
+   ========================================================================== */
+.causes {
+  background: #ffffff;
+  border-radius: 16px !important;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(27, 46, 83, 0.02);
+  border: 1px solid rgba(27, 46, 83, 0.04);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.causes:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(27, 46, 83, 0.08) !important;
+}
+
+.causes .img {
+  height: 220px !important;
+  transition: all 0.4s ease;
+}
+
+.causes:hover .img {
+  transform: scale(1.02);
+}
+
+.causes .text {
+  padding: 24px 20px !important;
+}
+
+.causes h2 a {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--primary-navy) !important;
+  transition: color 0.3s ease;
+  text-decoration: none;
+}
+
+.causes h2 a:hover {
+  color: var(--accent-magenta) !important;
+}
+
+.causes p {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.causes .goal {
+  background: rgba(27, 46, 83, 0.02);
+  padding: 12px 15px;
+  border-radius: 10px;
+  border: 1px solid rgba(27, 46, 83, 0.04);
+}
+
+.causes .goal p {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin-bottom: 8px !important;
+}
+
+.causes .goal p span {
+  color: var(--primary-navy);
+  font-weight: 700;
+}
+
+.causes .progress {
+  background-color: rgba(27, 46, 83, 0.08) !important;
+  border-radius: 30px !important;
+  box-shadow: none !important;
+}
+
+.causes .progress-bar {
+  border-radius: 30px !important;
+  font-weight: 700;
+  font-size: 10px;
+  background: linear-gradient(90deg, var(--secondary-cyan) 0%, var(--accent-magenta) 100%) !important;
+}
+
+/* Custom outline action button transitions */
+.btn-outline-magenta {
+  border: 2px solid var(--accent-magenta) !important;
+  color: var(--accent-magenta) !important;
+  background: transparent !important;
+  transition: all 0.3s ease !important;
+}
+
+.btn-outline-magenta:hover {
+  background: var(--accent-magenta) !important;
+  color: #ffffff !important;
+  box-shadow: 0 6px 15px rgba(216, 27, 96, 0.25) !important;
+}
+
+/* Global Form Control Focus State Override */
+.form-control:focus, 
+.form-group .form-control:focus,
+.contactForm .form-control:focus {
+  border-color: var(--accent-magenta) !important;
+  box-shadow: 0 0 0 3px rgba(216, 27, 96, 0.12) !important;
+  outline: 0 !important;
+}
+
+/* ==========================================================================
+   Storytelling Dashboard Tabs (About Us)
+   ========================================================================== */
+.about-tabs-nav {
+  display: inline-flex;
+  padding: 6px;
+  background: #ffffff;
+  border-radius: 40px;
+  border: 1px solid rgba(27, 46, 83, 0.08);
+  box-shadow: 0 10px 25px rgba(27, 46, 83, 0.04);
+}
+
+.tab-nav-btn {
+  border: none;
+  background: transparent;
+  padding: 10px 24px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-muted);
+  border-radius: 35px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  outline: none;
+}
+
+.tab-nav-btn.active {
+  background: var(--primary-navy);
+  color: #ffffff !important;
+  box-shadow: 0 4px 12px rgba(27, 46, 83, 0.15);
+}
+
+.tab-nav-btn:hover:not(.active) {
+  color: var(--primary-navy);
+  background: rgba(27, 46, 83, 0.04);
+}
+
+.about-tab-panel {
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Tab Switch Slide up Fade Animation */
+.fade-in-up {
+  animation: tabFadeInUp 0.4s forwards cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes tabFadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ==========================================================================
+   Premium Objectives Grid Cards
+   ========================================================================== */
+.goal-card-premium {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 30px;
+  box-shadow: 0 10px 30px rgba(27, 46, 83, 0.02);
+  border: 1px solid rgba(27, 46, 83, 0.04);
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.goal-card-premium::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, var(--secondary-cyan) 0%, var(--accent-magenta) 100%);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+}
+
+.goal-card-premium:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(27, 46, 83, 0.06);
+  border-color: rgba(27, 46, 83, 0.08);
+}
+
+.goal-card-premium:hover::before {
+  transform: scaleX(1);
+}
+
+.goal-number {
+  position: absolute;
+  top: 20px;
+  right: 25px;
+  font-size: 28px;
+  font-weight: 800;
+  color: rgba(27, 46, 83, 0.05);
+  font-family: var(--font-display);
+  transition: color 0.3s ease;
+}
+
+.goal-card-premium:hover .goal-number {
+  color: rgba(216, 27, 96, 0.08);
+}
+
+.goal-icon-wrap {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: rgba(14, 165, 233, 0.08);
+  color: var(--secondary-cyan);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  margin-bottom: 24px;
+  transition: all 0.3s ease;
+}
+
+.goal-card-premium:hover .goal-icon-wrap {
+  background: var(--accent-magenta);
+  color: #ffffff;
+  transform: rotate(5deg) scale(1.05);
+}
+
+.goal-card-premium h4 {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--primary-navy) !important;
+  margin-bottom: 12px;
+}
+
+.goal-card-premium p {
+  font-size: 14.5px;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 0;
+}
+
+/* ==========================================================================
+   Decorations (Hero Wave Divider)
+   ========================================================================== */
+.custom-shape-divider-bottom-168903 {
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  transform: rotate(180deg);
+  z-index: 5;
+}
+
+.custom-shape-divider-bottom-168903 svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 60px;
+}
+
+.custom-shape-divider-bottom-168903 .shape-fill {
+  fill: #ffffff; /* Transitions smoothly into the white content section */
+}
+
+
+
