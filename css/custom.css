@@ -2019,13 +2019,34 @@ a:hover, a:focus {
   background: var(--primary-navy) !important; /* Navy */
 }
 .volunteer .text.text-2 {
-  background: #fd645b !important; /* Coral Orange-pink */
+  background: var(--accent-magenta) !important; /* Magenta Pink */
 }
 .volunteer .text.text-3 {
   background: var(--secondary-cyan) !important; /* Cyan */
 }
 .volunteer .text.text-4 {
-  background: var(--accent-magenta) !important; /* Magenta Pink */
+  background: var(--primary-navy) !important; /* Navy */
+}
+
+/* Force high contrast text on the color backgrounds */
+.volunteer .text h3 {
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.5px;
+}
+.volunteer .text span {
+  color: rgba(255, 255, 255, 0.85) !important;
+  font-size: 13px !important;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+  display: block;
+  margin-top: 4px;
+}
+.volunteer .text p {
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  opacity: 0.9;
 }
 
 /* Volunteer Sign Up Form Refinements */
@@ -2055,4 +2076,27 @@ a:hover, a:focus {
   letter-spacing: 0.5px !important;
   margin-bottom: 6px !important;
   display: block;
+}
+
+/* Ensure the dynamically injected navbar works with position: fixed/sticky */
+#header-placeholder {
+  display: contents !important;
+}
+
+/* Overlap donation form between slider and welcome section on desktop */
+@media (min-width: 992px) {
+  .donation-overlap {
+    margin-top: -160px !important;
+    min-height: calc(100% + 160px) !important;
+    height: 100% !important;
+    border-radius: 0 !important;
+    position: relative !important;
+    z-index: 99 !important;
+  }
+}
+@media (max-width: 991.98px) {
+  .donation-overlap {
+    margin-top: 30px !important;
+    border-radius: 12px !important;
+  }
 }
