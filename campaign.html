@@ -2,11 +2,15 @@
 <html lang="en">
 
 <head>
-  <title>Our Campaign - Divy Jyot Foundation | Food Safety & Adulteration Awareness Gujarat</title>
+  <title>Our Campaign - Divy Jyot Foundation | Food Safety &amp; Adulteration Awareness Gujarat</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Explore Divy Jyot Foundation's active food safety campaigns in Gujarat.">
 
-  <link href="https://fonts.googleapis.com/css?family=Montserrat:200,300,400,500,600,700,800&display=swap"
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -17,119 +21,472 @@
   <link rel="stylesheet" href="css/flaticon.css">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/custom.css">
+
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+
+    /* Hero */
+    .campaign-hero h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 36px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      line-height: 1.2;
+    }
+
+    .campaign-hero .lead {
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+      font-weight: 400;
+    }
+
+    /* Eyebrow labels */
+    .camp-eyebrow {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--accent-magenta);
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    /* Section headings */
+    .camp-heading {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 30px;
+      font-weight: 700;
+      line-height: 1.25;
+      color: var(--primary-navy);
+      margin-bottom: 0;
+    }
+
+    .camp-heading-white {
+      color: #fff !important;
+    }
+
+    .camp-body {
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      line-height: 1.7;
+      color: #64748b;
+    }
+
+    /* Campaign Cards */
+    .campaign-card {
+      background: #fff;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 24px rgba(15, 23, 42, 0.05);
+      border: 1.5px solid #edf2f7;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      height: 100%;
+    }
+
+    .campaign-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 40px rgba(216, 27, 96, 0.12);
+      border-color: rgba(216, 27, 96, 0.2);
+    }
+
+    .campaign-card .card-img {
+      position: relative;
+      height: 200px;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .campaign-card .card-img::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(15, 23, 42, 0.45) 0%, transparent 60%);
+    }
+
+    .campaign-card .status-pill {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      z-index: 2;
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 10px;
+      font-weight: 700;
+      font-family: 'Montserrat', sans-serif;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+    }
+
+    .pill-active {
+      background: #10b981;
+      color: #fff;
+    }
+
+    .pill-upcoming {
+      background: #f59e0b;
+      color: #fff;
+    }
+
+    .campaign-card .card-body {
+      padding: 24px;
+    }
+
+    .campaign-card h3 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--primary-navy);
+      margin-bottom: 8px;
+      line-height: 1.3;
+    }
+
+    .campaign-card h3 a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .campaign-card h3 a:hover {
+      color: var(--accent-magenta);
+    }
+
+    .campaign-card p {
+      font-family: 'Inter', sans-serif;
+      font-size: 13.5px;
+      line-height: 1.6;
+      color: #64748b;
+      margin-bottom: 16px;
+    }
+
+    .camp-progress-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      color: #64748b;
+    }
+
+    .camp-progress-pct {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--accent-magenta);
+    }
+
+    .camp-progress-bar {
+      height: 6px;
+      background: #e2e8f0;
+      border-radius: 4px;
+      margin-bottom: 18px;
+      overflow: hidden;
+    }
+
+    .camp-progress-fill {
+      height: 100%;
+      border-radius: 4px;
+      background: linear-gradient(90deg, var(--accent-magenta), #1b2e53);
+    }
+
+    .btn-camp-support {
+      display: block;
+      text-align: center;
+      padding: 10px 20px;
+      border-radius: 30px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      border: 2px solid var(--accent-magenta);
+      color: var(--accent-magenta);
+      transition: all 0.3s ease;
+      text-decoration: none;
+    }
+
+    .btn-camp-support:hover {
+      background: var(--accent-magenta);
+      color: #fff;
+      text-decoration: none;
+    }
+
+    /* Hazard Cards */
+    .hazard-card-interactive {
+      background: #fff;
+      border-radius: 16px;
+      padding: 32px 24px;
+      box-shadow: 0 6px 24px rgba(15, 23, 42, 0.04);
+      border: 1.5px solid #edf2f7;
+      border-top: 4px solid var(--accent-magenta);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      height: 100%;
+      width: 100%;
+    }
+
+    .hazard-card-interactive:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 14px 36px rgba(216, 27, 96, 0.12);
+    }
+
+    .hazard-card-interactive .icon-box {
+      width: 56px;
+      height: 56px;
+      border-radius: 14px;
+      background: rgba(216, 27, 96, 0.07);
+      color: var(--accent-magenta);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      margin: 0 auto 18px;
+      transition: all 0.3s ease;
+    }
+
+    .hazard-card-interactive:hover .icon-box {
+      background: var(--accent-magenta);
+      color: #fff;
+      transform: scale(1.08);
+    }
+
+    .hazard-card-interactive h4 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--primary-navy);
+      margin-bottom: 10px;
+    }
+
+    .hazard-card-interactive p {
+      font-family: 'Inter', sans-serif;
+      font-size: 13.5px;
+      line-height: 1.65;
+      color: #64748b;
+      margin-bottom: 0;
+    }
+
+    /* Process Steps */
+    .process-step-card {
+      background: #fff;
+      border-radius: 14px;
+      padding: 20px 22px;
+      box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
+      border: 1px solid #edf2f7;
+      border-left: 4px solid var(--accent-magenta);
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: flex-start;
+      gap: 18px;
+    }
+
+    .process-step-card:hover {
+      transform: translateX(4px);
+      box-shadow: 0 8px 28px rgba(216, 27, 96, 0.1);
+    }
+
+    .step-number-badge {
+      flex-shrink: 0;
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--accent-magenta), #1b2e53);
+      color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .process-step-card h5 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--primary-navy);
+      margin-bottom: 4px;
+    }
+
+    .process-step-card p {
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      line-height: 1.6;
+      color: #64748b;
+      margin-bottom: 0;
+    }
+
+    /* Outreach Cards */
+    .outreach-card {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 18px;
+      padding: 40px 36px;
+      height: 100%;
+      transition: background 0.3s ease;
+    }
+
+    .outreach-card:hover {
+      background: rgba(255, 255, 255, 0.07);
+    }
+
+    .outreach-card .outreach-icon {
+      font-size: 28px;
+      color: #38bdf8;
+      margin-bottom: 18px;
+      display: block;
+    }
+
+    .outreach-card h3 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 21px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 14px;
+    }
+
+    .outreach-card p {
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      line-height: 1.75;
+      color: #94a3b8;
+    }
+
+    /* Volunteer CTA */
+    .volunteer-cta-section {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .volunteer-cta-section .overlay {
+      position: absolute;
+      inset: 0;
+      background: #0f172a;
+      opacity: 0.96;
+      z-index: 1;
+    }
+
+    .volunteer-cta-section .container {
+      position: relative;
+      z-index: 2;
+    }
+
+    @media (max-width: 768px) {
+      .campaign-hero h1 {
+        font-size: 26px;
+      }
+
+      .camp-heading {
+        font-size: 24px;
+      }
+
+      .outreach-card {
+        padding: 28px 22px;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-  <!-- Reusable Header Navigation Placeholder -->
   <div id="header-placeholder"></div>
 
-  <section class="hero-wrap hero-wrap-2" style="background-image: url('images/bg_2.jpg');"
+  <!-- HERO -->
+  <section class="hero-wrap hero-wrap-2 d-flex align-items-center justify-content-center campaign-hero"
+    style="background-image: url('images/campgine_hero.png'); min-height: 480px; position: relative;"
     data-stellar-background-ratio="0.5">
-    <div class="overlay"></div>
-    <div class="container">
-      <div class="row no-gutters slider-text align-items-end">
-        <div class="col-md-9 ftco-animate pb-5">
-          <p class="breadcrumbs mb-2">
-            <span class="mr-2"><a href="index.html">Home <i class="fa fa-chevron-right"
-                  style="font-size: 10px;"></i></a></span>
-            <span>Our Campaign <i class="fa fa-chevron-right" style="font-size: 10px;"></i></span>
+    <div class="overlay" style="background: rgba(11,19,43,0.87);"></div>
+    <div class="container" style="position: relative; z-index: 10;">
+      <div class="row no-gutters slider-text align-items-center justify-content-center">
+        <div class="col-md-10 text-center ftco-animate pb-5">
+          <p class="breadcrumbs mb-2"
+            style="font-weight:600; text-transform:uppercase; font-size:12px; letter-spacing:2px;">
+            <span class="mr-2"><a href="index.html" style="color:rgba(255,255,255,0.65);">Home <i
+                  class="fa fa-chevron-right" style="font-size:9px;"></i></a></span>
+            <span style="color:var(--accent-magenta);">Our Campaign</span>
           </p>
-          <h1 class="mb-0 bread">Our Campaign</h1>
+          <h1 class="mb-3" style="color:#fff;">Our Campaigns</h1>
+          <div class="about-hero-divider mx-auto mb-4"></div>
+          <p class="lead text-white-50 mx-auto" style="max-width:680px;">
+            Take an active part in promoting food safety, detecting chemical contamination, and raising standards across
+            Gujarat.
+          </p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Active Campaigns Section -->
-  <section class="ftco-section">
+  <!-- ACTIVE CAMPAIGNS GRID -->
+  <section class="ftco-section bg-white" style="padding: 7em 0 5em;">
     <div class="container">
-      <div class="row pb-5">
-        <div class="col-md-10 heading-section text-left ftco-animate">
-          <span class="subheading">Our Drives</span>
-          <h2>Active Food Safety Campaigns in Gujarat</h2>
+      <div class="row justify-content-center mb-5">
+        <div class="col-md-9 text-center ftco-animate">
+          <span class="camp-eyebrow">Our Drives</span>
+          <h2 class="camp-heading mb-3">Active Campaigns in Gujarat</h2>
+          <p class="camp-body mx-auto" style="max-width:600px;">Explore our ongoing and upcoming operations focused on
+            food purity and consumer protection.</p>
         </div>
       </div>
       <div class="row">
-        <div class="col-md-6 col-lg-3">
-          <div class="causes causes-2 text-center ftco-animate">
-            <a href="campaign.html" class="img w-100"
-              style="background-image: url(images/causes-1.jpg); position: relative;">
-              <span class="badge"
-                style="position: absolute; top: 15px; left: 15px; padding: 6px 12px; font-size: 11px; font-weight: 700; color: #fff; background-color: #28a745; border-radius: 4px; z-index: 1;">ACTIVE</span>
-            </a>
-            <div class="text p-3">
-              <h2><a href="campaign.html">Food Adulteration Detection Kits</a></h2>
+        <div class="col-md-6 col-lg-3 mb-4 ftco-animate">
+          <div class="campaign-card">
+            <div class="card-img" style="background-image:url(images/campg1.png);"><span
+                class="status-pill pill-active">Active</span></div>
+            <div class="card-body">
+              <h3><a href="donate.html">Food Adulteration Detection Kits</a></h3>
               <p>Distributing rapid testing kits to households for detecting milk, oil, and ghee adulterants.</p>
-              <div class="goal mb-4">
-                <p><span>₹15,000</span> to go</p>
-                <div class="progress" style="height:20px">
-                  <div class="progress-bar progress-bar-striped" style="width:70%; height:20px">70%</div>
-                </div>
+              <div class="d-flex justify-content-between mb-1"><span class="camp-progress-label">&#8377;15,000
+                  remaining</span><span class="camp-progress-pct">70%</span></div>
+              <div class="camp-progress-bar">
+                <div class="camp-progress-fill" style="width:70%;"></div>
               </div>
-              <p><a href="contact.html" class="btn btn-light w-100">Support Now</a></p>
+              <a href="donate.html" class="btn-camp-support">Support Now</a>
             </div>
           </div>
         </div>
-        <div class="col-md-6 col-lg-3">
-          <div class="causes causes-2 text-center ftco-animate">
-            <a href="campaign.html" class="img w-100"
-              style="background-image: url(images/causes-2.jpg); position: relative;">
-              <span class="badge"
-                style="position: absolute; top: 15px; left: 15px; padding: 6px 12px; font-size: 11px; font-weight: 700; color: #fff; background-color: #28a745; border-radius: 4px; z-index: 1;">ACTIVE</span>
-            </a>
-            <div class="text p-3">
-              <h2><a href="campaign.html">Gujarat Outreach Seminars</a></h2>
+        <div class="col-md-6 col-lg-3 mb-4 ftco-animate">
+          <div class="campaign-card">
+            <div class="card-img" style="background-image:url(images/campg2.png);"><span
+                class="status-pill pill-active">Active</span></div>
+            <div class="card-body">
+              <h3><a href="donate.html">Gujarat Outreach Seminars</a></h3>
               <p>Organizing public awareness seminars and workshops in schools, colleges, and villages.</p>
-              <div class="goal mb-4">
-                <p><span>₹25,000</span> to go</p>
-                <div class="progress" style="height:20px">
-                  <div class="progress-bar progress-bar-striped" style="width:82%; height:20px">82%</div>
-                </div>
+              <div class="d-flex justify-content-between mb-1"><span class="camp-progress-label">&#8377;25,000
+                  remaining</span><span class="camp-progress-pct">82%</span></div>
+              <div class="camp-progress-bar">
+                <div class="camp-progress-fill" style="width:82%;"></div>
               </div>
-              <p><a href="contact.html" class="btn btn-light w-100">Support Now</a></p>
+              <a href="donate.html" class="btn-camp-support">Support Now</a>
             </div>
           </div>
         </div>
-        <div class="col-md-6 col-lg-3">
-          <div class="causes causes-2 text-center ftco-animate">
-            <a href="campaign.html" class="img w-100"
-              style="background-image: url(images/causes-3.jpg); position: relative;">
-              <span class="badge"
-                style="position: absolute; top: 15px; left: 15px; padding: 6px 12px; font-size: 11px; font-weight: 700; color: #fff; background-color: #fd7e14; border-radius: 4px; z-index: 1;">UPCOMING</span>
-            </a>
-            <div class="text p-3">
-              <h2><a href="campaign.html">Mobile Food Testing Labs</a></h2>
+        <div class="col-md-6 col-lg-3 mb-4 ftco-animate">
+          <div class="campaign-card">
+            <div class="card-img" style="background-image:url(images/campg3.png);"><span
+                class="status-pill pill-upcoming">Upcoming</span></div>
+            <div class="card-body">
+              <h3><a href="donate.html">Mobile Food Testing Labs</a></h3>
               <p>Deploying mobile laboratories to marketplaces for instant test results on spot food items.</p>
-              <div class="goal mb-4">
-                <p><span>₹40,000</span> to go</p>
-                <div class="progress" style="height:20px">
-                  <div class="progress-bar progress-bar-striped" style="width:95%; height:20px">95%</div>
-                </div>
+              <div class="d-flex justify-content-between mb-1"><span class="camp-progress-label">&#8377;40,000
+                  remaining</span><span class="camp-progress-pct">95%</span></div>
+              <div class="camp-progress-bar">
+                <div class="camp-progress-fill" style="width:95%;"></div>
               </div>
-              <p><a href="contact.html" class="btn btn-secondary w-100 text-white"
-                  style="background-color: #fd7e14; border-color: #fd7e14;">Support Upcoming</a></p>
+              <a href="donate.html" class="btn-camp-support">Support Upcoming</a>
             </div>
           </div>
         </div>
-        <div class="col-md-6 col-lg-3">
-          <div class="causes causes-2 text-center ftco-animate">
-            <a href="campaign.html" class="img w-100"
-              style="background-image: url(images/causes-4.jpg); position: relative;">
-              <span class="badge"
-                style="position: absolute; top: 15px; left: 15px; padding: 6px 12px; font-size: 11px; font-weight: 700; color: #fff; background-color: #fd7e14; border-radius: 4px; z-index: 1;">UPCOMING</span>
-            </a>
-            <div class="text p-3">
-              <h2><a href="campaign.html">Consumer Rights & legal Help</a></h2>
+        <div class="col-md-6 col-lg-3 mb-4 ftco-animate">
+          <div class="campaign-card">
+            <div class="card-img" style="background-image:url(images/campg4.png);"><span
+                class="status-pill pill-upcoming">Upcoming</span></div>
+            <div class="card-body">
+              <h3><a href="donate.html">Consumer Rights &amp; Legal Help</a></h3>
               <p>Providing food safety counseling, regulatory help, and legal guidance for filing complaints.</p>
-              <div class="goal mb-4">
-                <p><span>₹10,000</span> to go</p>
-                <div class="progress" style="height:20px">
-                  <div class="progress-bar progress-bar-striped" style="width:75%; height:20px">75%</div>
-                </div>
+              <div class="d-flex justify-content-between mb-1"><span class="camp-progress-label">&#8377;10,000
+                  remaining</span><span class="camp-progress-pct">75%</span></div>
+              <div class="camp-progress-bar">
+                <div class="camp-progress-fill" style="width:75%;"></div>
               </div>
-              <p><a href="contact.html" class="btn btn-secondary w-100 text-white"
-                  style="background-color: #fd7e14; border-color: #fd7e14;">Support Upcoming</a></p>
+              <a href="donate.html" class="btn-camp-support">Support Upcoming</a>
             </div>
           </div>
         </div>
@@ -137,83 +494,117 @@
     </div>
   </section>
 
-  <!-- Why Our Campaign Matters Section -->
-  <section class="ftco-section bg-light">
+  <!-- WHY IT MATTERS — HAZARD CARDS -->
+  <section class="ftco-section bg-light" style="padding: 7em 0;">
     <div class="container">
-      <div class="row justify-content-center pb-5">
-        <div class="col-md-8 heading-section text-center ftco-animate">
-          <span class="subheading">Why Our Campaign Matters</span>
-          <h2>The Serious Hazards of Food Adulteration</h2>
-          <p class="mt-3">Food adulteration is not just a commercial fraud; it is a direct threat to public health,
+      <div class="row justify-content-center mb-5">
+        <div class="col-md-9 text-center ftco-animate">
+          <span class="camp-eyebrow">Why Our Campaign Matters</span>
+          <h2 class="camp-heading mb-3">The Serious Hazards of Food Adulteration</h2>
+          <p class="camp-body mx-auto" style="max-width:680px;">Food adulteration is a direct threat to public health,
             safety, and economic security. Our campaign actively addresses these critical challenges through education,
-            awareness, and community participation across Gujarat.</p>
+            awareness, and community action across Gujarat.</p>
         </div>
       </div>
-
       <div class="row">
-        <div class="col-md-4 d-flex align-items-stretch ftco-animate">
-          <div class="services-2 text-center p-4 bg-white shadow-sm w-100 rounded mb-4">
-            <div class="icon icon-1 d-flex align-items-center justify-content-center mx-auto"><span
-                class="flaticon-stethoscope"></span></div>
-            <div class="text mt-3">
-              <h4>1. Serious Health Complications</h4>
-              <p>Consuming toxic chemicals, non-permitted synthetic dyes, and heavy metals leads to acute poisoning and
-                organ damage.</p>
-            </div>
+        <div class="col-md-6 col-lg-4 d-flex align-items-stretch mb-4 ftco-animate">
+          <div class="hazard-card-interactive text-center">
+            <div class="icon-box"><span class="flaticon-stethoscope"></span></div>
+            <h4>Serious Health Complications</h4>
+            <p>Consuming toxic chemicals, non-permitted synthetic dyes, and heavy metals leads to acute poisoning and
+              organ damage.</p>
           </div>
         </div>
-        <div class="col-md-4 d-flex align-items-stretch ftco-animate">
-          <div class="services-2 text-center p-4 bg-white shadow-sm w-100 rounded mb-4">
-            <div class="icon icon-2 d-flex align-items-center justify-content-center mx-auto"><span
-                class="flaticon-bread"></span></div>
-            <div class="text mt-3">
-              <h4>2. Food-Borne Illnesses</h4>
-              <p>Contaminated water, starch, or low-quality ingredients introduce harmful pathogens, resulting in severe
-                gastrointestinal diseases.</p>
-            </div>
+        <div class="col-md-6 col-lg-4 d-flex align-items-stretch mb-4 ftco-animate">
+          <div class="hazard-card-interactive text-center">
+            <div class="icon-box"><span class="flaticon-bread"></span></div>
+            <h4>Food-Borne Illnesses</h4>
+            <p>Contaminated water, starch, or low-quality ingredients introduce harmful pathogens, resulting in severe
+              gastrointestinal diseases.</p>
           </div>
         </div>
-        <div class="col-md-4 d-flex align-items-stretch ftco-animate">
-          <div class="services-2 text-center p-4 bg-white shadow-sm w-100 rounded mb-4">
-            <div class="icon icon-3 d-flex align-items-center justify-content-center mx-auto"><span
-                class="flaticon-ecological"></span></div>
-            <div class="text mt-3">
-              <h4>3. Long-Term Health Risks</h4>
-              <p>Regular intake of trace adulterants like urea, mineral oils, or argemone seeds poses long-term risks,
-                including chronic disorders and cancer.</p>
-            </div>
+        <div class="col-md-6 col-lg-4 d-flex align-items-stretch mb-4 ftco-animate">
+          <div class="hazard-card-interactive text-center">
+            <div class="icon-box"><span class="flaticon-ecological"></span></div>
+            <h4>Long-Term Health Risks</h4>
+            <p>Regular intake of trace adulterants like urea, mineral oils, or argemone seeds poses long-term risks,
+              including chronic disorders and cancer.</p>
           </div>
         </div>
-        <div class="col-md-4 d-flex align-items-stretch ftco-animate">
-          <div class="services-2 text-center p-4 bg-white shadow-sm w-100 rounded mb-4">
-            <div class="icon icon-4 d-flex align-items-center justify-content-center mx-auto"><span
-                class="flaticon-donation"></span></div>
-            <div class="text mt-3">
-              <h4>4. Consumer Deception</h4>
-              <p>People pay premium prices for inferior, diluted, or entirely fake products, violating their basic
-                consumer rights.</p>
-            </div>
+        <div class="col-md-6 col-lg-4 d-flex align-items-stretch mb-4 ftco-animate">
+          <div class="hazard-card-interactive text-center">
+            <div class="icon-box"><span class="flaticon-donation"></span></div>
+            <h4>Consumer Deception</h4>
+            <p>People pay premium prices for inferior, diluted, or entirely fake products, violating their basic
+              consumer rights.</p>
           </div>
         </div>
-        <div class="col-md-4 d-flex align-items-stretch ftco-animate">
-          <div class="services-2 text-center p-4 bg-white shadow-sm w-100 rounded mb-4">
-            <div class="icon icon-1 d-flex align-items-center justify-content-center mx-auto"><span
-                class="flaticon-piggy-bank"></span></div>
-            <div class="text mt-3">
-              <h4>5. Economic Losses</h4>
-              <p>Adulteration undermines honest local farmers and producers, shifting market share to unethical
-                operators and increasing healthcare costs.</p>
-            </div>
+        <div class="col-md-6 col-lg-4 d-flex align-items-stretch mb-4 ftco-animate">
+          <div class="hazard-card-interactive text-center">
+            <div class="icon-box"><span class="flaticon-piggy-bank"></span></div>
+            <h4>Economic Losses</h4>
+            <p>Adulteration undermines honest local farmers and producers, shifting market share to unethical operators
+              and increasing healthcare costs.</p>
           </div>
         </div>
-        <div class="col-md-4 d-flex align-items-stretch ftco-animate">
-          <div class="services-2 text-center p-4 bg-white shadow-sm w-100 rounded mb-4">
-            <div class="icon icon-2 d-flex align-items-center justify-content-center mx-auto"><span
-                class="flaticon-volunteer"></span></div>
-            <div class="text mt-3">
-              <h4>6. Reduced Trust in Food Systems</h4>
-              <p>Widespread adulteration degrades public confidence in food supply systems, making everyday grocery
-                shopping a stressful experience.</p>
+        <div class="col-md-6 col-lg-4 d-flex align-items-stretch mb-4 ftco-animate">
+          <div class="hazard-card-interactive text-center">
+            <div class="icon-box"><span class="flaticon-volunteer"></span></div>
+            <h4>Reduced Trust in Food Systems</h4>
+            <p>Widespread adulteration degrades public confidence in food supply systems, making everyday grocery
+              shopping a stressful experience.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOD COMPLAINT ASSISTANCE -->
+  <section class="ftco-section bg-white" id="complaint-assistance" style="padding: 7em 0;">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-md-6 pr-lg-5 mb-5 mb-md-0 ftco-animate">
+          <img src="images/m1.png" alt="Complaint Assistance" class="img-fluid"
+            style="border-radius:16px; box-shadow:0 16px 48px rgba(15,23,42,0.1); border:6px solid rgba(27,46,83,0.04);">
+        </div>
+        <div class="col-md-6 pl-lg-4 ftco-animate">
+          <span class="camp-eyebrow">Empowerment Guide</span>
+          <h2 class="camp-heading mb-3">Food Complaint Assistance</h2>
+          <p class="camp-body mb-4">If you suspect food adulteration or witness food safety violations in your
+            neighborhood, hotel, or retail shop, you have the right and duty to report it. Here is the step-by-step
+            process to file an official report:</p>
+          <div style="display:flex; flex-direction:column; gap:14px;">
+            <div class="process-step-card">
+              <div class="step-number-badge">01</div>
+              <div>
+                <h5>Contact the Local Food Safety Officer</h5>
+                <p>Submit a written complaint to the designated officer of your local Municipal Corporation or District
+                  Health Office in Gujarat with samples and bills.</p>
+              </div>
+            </div>
+            <div class="process-step-card">
+              <div class="step-number-badge">02</div>
+              <div>
+                <h5>File on FSSAI FoSCoS Portal</h5>
+                <p>Register your grievance online via the national FSSAI portal at <a href="https://foscos.fssai.gov.in"
+                    target="_blank" style="color:var(--accent-magenta);font-weight:600;">foscos.fssai.gov.in</a>.</p>
+              </div>
+            </div>
+            <div class="process-step-card">
+              <div class="step-number-badge">03</div>
+              <div>
+                <h5>Toll-Free Helpline Support</h5>
+                <p>Call the national toll-free food safety helpline at <strong>1800-11-2100</strong> to seek guidance
+                  and register instant complaints.</p>
+              </div>
+            </div>
+            <div class="process-step-card">
+              <div class="step-number-badge">04</div>
+              <div>
+                <h5>Divy Jyot Assistance</h5>
+                <p>Stuck in the process? Contact our legal aid desk for guidance on documenting evidence and drafting
+                  official letters.</p>
+              </div>
             </div>
           </div>
         </div>
@@ -221,99 +612,65 @@
     </div>
   </section>
 
-  <!-- Food Complaint Assistance Section -->
-  <section class="ftco-section" id="complaint-assistance">
+  <!-- REGULATORY AWARENESS AND OUTREACH -->
+  <section class="ftco-section" style="background:var(--primary-navy); padding: 6em 0;">
     <div class="container">
-      <div class="row d-flex no-gutters">
-        <div class="col-md-6 d-flex">
-          <div
-            class="img img-video d-flex align-self-stretch align-items-center justify-content-center justify-content-md-center mb-4 mb-sm-0"
-            style="background-image:url(images/about-3.jpg); min-height: 400px; width: 100%;">
-          </div>
-        </div>
-        <div class="col-md-6 pr-md-5 py-md-5 pl-md-5">
-          <div class="heading-section mb-4">
-            <span class="subheading">Empowerment Guide</span>
-            <h2 class="mb-3">Food Complaint Assistance</h2>
-            <p>If you suspect food adulteration or witness food safety violations in your neighborhood, hotel, or retail
-              shop, you have the right and duty to report it. Here is the step-by-step process to file an official
-              report:</p>
-
-            <ul class="list-unstyled mt-4">
-              <li class="d-flex mb-3"><span class="fa fa-check-circle text-primary mr-3 mt-1"
-                  style="font-size: 18px;"></span> <span><strong>Step 1: Contact the Local Food Safety
-                    Officer</strong><br>Submit a written complaint to the designated officer of your local Municipal
-                  Corporation or District Health Office in Gujarat with samples/bills.</span></li>
-              <li class="d-flex mb-3"><span class="fa fa-check-circle text-primary mr-3 mt-1"
-                  style="font-size: 18px;"></span> <span><strong>Step 2: File on FSSAI FoSCoS
-                    Portal</strong><br>Register your grievance online via the national FSSAI portal (Food Safety
-                  Connect) at <a href="https://foscos.fssai.gov.in" target="_blank">foscos.fssai.gov.in</a>.</span></li>
-              <li class="d-flex mb-3"><span class="fa fa-check-circle text-primary mr-3 mt-1"
-                  style="font-size: 18px;"></span> <span><strong>Step 3: Toll-Free Helpline Support</strong><br>Call the
-                  national toll-free food safety helpline at <strong>1800-11-2100</strong> to seek guidance and register
-                  instant complaints.</span></li>
-              <li class="d-flex mb-3"><span class="fa fa-check-circle text-primary mr-3 mt-1"
-                  style="font-size: 18px;"></span> <span><strong>Step 4: Divy Jyot Assistance</strong><br>Stuck in the
-                  process? Contact our legal aid desk for guidance on documenting evidence and drafting official
-                  letters.</span></li>
-            </ul>
-          </div>
+      <div class="row justify-content-center mb-5">
+        <div class="col-md-9 text-center">
+          <span class="camp-eyebrow">Our Programme Areas</span>
+          <h2 class="camp-heading camp-heading-white mb-2">Regulatory Awareness &amp; Outreach</h2>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- Regulatory Awareness & Outreach Programs -->
-  <section class="ftco-section bg-secondary text-white">
-    <div class="container">
       <div class="row">
-        <div class="col-md-6 ftco-animate">
-          <div class="p-4 rounded h-100"
-            style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);">
-            <h3 class="text-white mb-3"><span class="fa fa-balance-scale text-primary mr-2"></span> Regulatory Awareness
-            </h3>
+        <div class="col-md-6 mb-4 mb-md-0 ftco-animate">
+          <div class="outreach-card">
+            <span class="outreach-icon fa fa-balance-scale"></span>
+            <h3>Regulatory Awareness</h3>
             <p>Our foundation works tirelessly to promote awareness of consumer rights and standard food regulations. We
               believe that an informed citizen is the strongest defense against adulteration.</p>
-            <p>We educate food businesses on hygiene guidelines and FSSAI standards, while advising consumers on
-              standard labels, FSSAI logos, shelf life checks, and chemical-free choices.</p>
+            <p class="mb-0">We educate food businesses on hygiene guidelines and FSSAI standards, while advising
+              consumers on standard labels, FSSAI logos, shelf life checks, and chemical-free choices.</p>
           </div>
         </div>
         <div class="col-md-6 ftco-animate">
-          <div class="p-4 rounded h-100"
-            style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);">
-            <h3 class="text-white mb-3"><span class="fa fa-users text-primary mr-2"></span> Community Outreach Programs
-            </h3>
+          <div class="outreach-card">
+            <span class="outreach-icon fa fa-users"></span>
+            <h3>Community Outreach</h3>
             <p>To reach every corner of Gujarat, Divy Jyot Foundation organizes public awareness events, interactive
-              workshops, educational campaigns, and school/college seminars.</p>
-            <p>Through these outreach efforts, we demonstrate rapid adulteration tests (e.g., detecting starch in milk,
-              starch in spices) and equip citizens with tools to inspect food on their own.</p>
+              workshops, educational campaigns, and school and college seminars.</p>
+            <p class="mb-0">Through these outreach efforts, we demonstrate rapid adulteration tests such as detecting
+              starch in milk or spices, and equip citizens with tools to inspect food on their own.</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Volunteer Engagement CTA -->
-  <section class="ftco-section testimony-section">
-    <div class="overlay" style="background: #252525; opacity: 0.95;"></div>
-    <div class="container">
-      <div class="row justify-content-center pb-5">
+  <!-- VOLUNTEER CTA -->
+  <section class="ftco-section testimony-section volunteer-cta-section">
+    <div class="overlay"></div>
+    <div class="container py-2">
+      <div class="row justify-content-center">
         <div class="col-md-8 heading-section heading-section-white text-center ftco-animate">
-          <span class="subheading">Volunteer Engagement</span>
-          <h2>Join the Fight for Safe Food</h2>
-          <p class="mt-3 text-light">We are building a powerful network of dedicated volunteers committed to creating a
-            safer food environment. As a volunteer, you can lead local detection workshops, assist in spreading
-            awareness, and guide local consumers on reporting adulteration violations in your city.</p>
-          <p class="mt-4"><a href="volunteer.html" class="btn btn-secondary py-3 px-5">Join Our Network Today</a></p>
+          <span class="camp-eyebrow">Volunteer Engagement</span>
+          <h2 class="camp-heading camp-heading-white mb-4">Join the Fight for Safe Food</h2>
+          <p class="mb-4"
+            style="font-family:'Inter',sans-serif; font-size:15px; line-height:1.75; color:rgba(255,255,255,0.7);">
+            We are building a powerful network of dedicated volunteers committed to creating a safer food environment.
+            As a volunteer, you can lead local detection workshops, assist in spreading awareness, and guide local
+            consumers on reporting adulteration violations in your city.
+          </p>
+          <a href="volunteer.html" class="btn btn-outline-magenta py-3 px-5"
+            style="border-radius:35px; text-transform:uppercase; font-size:13px; letter-spacing:1px; font-family:'Montserrat',sans-serif; font-weight:700;">
+            Join Our Network Today
+          </a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Reusable Footer Placeholder -->
   <div id="footer-placeholder"></div>
 
-  <!-- loader -->
   <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px">
       <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
       <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10"
@@ -331,12 +688,10 @@
   <script src="js/owl.carousel.min.js"></script>
   <script src="js/jquery.magnific-popup.min.js"></script>
   <script src="js/scrollax.min.js"></script>
-
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
   <script src="js/components.js"></script>
   <script src="js/email-service.js"></script>
   <script src="js/main.js"></script>
-
 </body>
 
 </html>

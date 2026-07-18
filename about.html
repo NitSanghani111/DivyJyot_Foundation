@@ -6,7 +6,10 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  <link href="https://fonts.googleapis.com/css?family=Montserrat:200,300,400,500,600,700,800&display=swap"
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Montserrat:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800&display=swap"
     rel="stylesheet">
 
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -25,6 +28,271 @@
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/custom.css">
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+  <style>
+    /* ═══ About Page Typography System ═══
+       Goal: professional, human-designed readability.
+       All headings use Montserrat (display), all body copy uses Inter.
+       Font sizes are tightened from inflated inline values to a measured rhythm.
+    */
+
+    /* ── Hero Section ── */
+    .about-hero-content h1.bread {
+      font-family: var(--font-display);
+      font-size: 38px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      line-height: 1.2;
+    }
+
+    .about-hero-content .lead {
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.7;
+      font-weight: 400;
+    }
+
+    /* ── Section Labels (Eyebrow text) ── */
+    .subheading,
+    .pillars-title-badge,
+    .about-tabs-nav~.subheading {
+      font-family: var(--font-display);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    /* ── Section Headings ── */
+    .about-section-heading,
+    section h2.font-weight-bold {
+      font-family: var(--font-display);
+      font-size: 30px;
+      font-weight: 700;
+      line-height: 1.25;
+      color: var(--primary-navy);
+    }
+
+    /* ── Intro "About Divy Jyot" paragraph ── */
+    .lead-text {
+      font-family: var(--font-body);
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 1.65;
+    }
+
+    /* ── Blockquote ── */
+    .highlight-quote {
+      font-family: var(--font-body);
+      font-size: 16px;
+      font-weight: 400;
+      font-style: italic;
+      line-height: 1.65;
+      color: var(--primary-navy);
+    }
+
+    /* ── Body / Paragraph Text ── */
+    .ftco-section p,
+    .mv-panel p,
+    .pillar-card p,
+    .goal-card-premium p,
+    .value-card-asymmetric p,
+    .glass-stat-label {
+      font-family: var(--font-body);
+      font-size: 14px;
+      line-height: 1.65;
+      color: var(--text-muted);
+    }
+
+    /* ── Pillar Cards ── */
+    .pillar-card h5 {
+      font-family: var(--font-display);
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    /* ── Mission & Vision ── */
+    .mv-panel h3 {
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 700;
+      line-height: 1.35;
+    }
+
+    /* ── Core Values ── */
+    .value-card-asymmetric h4 {
+      font-family: var(--font-display);
+      font-size: 17px;
+      font-weight: 700;
+    }
+
+    .value-card-asymmetric p {
+      font-size: 14px;
+    }
+
+    /* ── Objectives / Goals Grid ── */
+    .goal-card-premium {
+      background: #ffffff;
+      border-radius: 18px;
+      padding: 32px 28px;
+      box-shadow: 0 8px 28px rgba(15, 23, 42, 0.04);
+      border: 1.5px solid #edf2f7;
+      border-top: 4px solid var(--accent-magenta);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      height: 100%;
+    }
+
+    .goal-card-premium:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 16px 40px rgba(216, 27, 96, 0.1);
+      border-top-color: var(--primary-navy);
+    }
+
+    .goal-card-premium .goal-number {
+      font-family: var(--font-display);
+      font-size: 36px;
+      font-weight: 800;
+      color: rgba(216, 27, 96, 0.12);
+      line-height: 1;
+      margin-bottom: 12px;
+    }
+
+    .goal-card-premium .goal-icon-wrap {
+      width: 46px;
+      height: 46px;
+      border-radius: 12px;
+      background: rgba(216, 27, 96, 0.07);
+      color: var(--accent-magenta);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      margin-bottom: 18px;
+      transition: all 0.3s ease;
+    }
+
+    .goal-card-premium:hover .goal-icon-wrap {
+      background: var(--accent-magenta);
+      color: #fff;
+    }
+
+    .goal-card-premium h4 {
+      font-family: var(--font-display);
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--primary-navy);
+      margin-bottom: 8px;
+      line-height: 1.3;
+    }
+
+    .goal-card-premium p {
+      font-family: var(--font-body);
+      font-size: 14px;
+      line-height: 1.6;
+      color: var(--text-muted);
+      margin-bottom: 0;
+    }
+
+    /* ── Counter / Impact Cards ── */
+    .glass-stat-card {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 16px;
+      padding: 28px 24px;
+      backdrop-filter: blur(8px);
+      transition: all 0.3s ease;
+    }
+
+    .glass-stat-card:hover {
+      background: rgba(255, 255, 255, 0.13);
+      transform: translateY(-4px);
+    }
+
+    .glass-stat-number {
+      font-family: var(--font-display);
+      font-size: 42px;
+      font-weight: 700;
+      color: #ffffff;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .glass-stat-label {
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      color: rgba(255, 255, 255, 0.65);
+    }
+
+    /* ── Counter section heading ── */
+    .about-counter-section h2 {
+      font-family: var(--font-display);
+      font-size: 32px;
+      font-weight: 700;
+      line-height: 1.25;
+    }
+
+    .about-counter-section p {
+      font-family: var(--font-body);
+      font-size: 15px;
+      line-height: 1.7;
+      color: #cbd5e1;
+    }
+
+    /* ── Map Section ── */
+    .map-dashboard-container h2,
+    section h2:not(.font-weight-bold) {
+      font-family: var(--font-display);
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--primary-navy);
+    }
+
+    /* ── Final CTA Section ── */
+    .final-cta-section h2 {
+      font-family: var(--font-display);
+      font-size: 32px;
+      font-weight: 700;
+      line-height: 1.25;
+    }
+
+    .final-cta-section p {
+      font-family: var(--font-body);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    /* ── Tab Buttons ── */
+    .tab-nav-btn {
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    /* ── Responsive adjustments ── */
+    @media (max-width: 768px) {
+      .about-hero-content h1.bread {
+        font-size: 28px;
+      }
+
+      section h2.font-weight-bold {
+        font-size: 24px;
+      }
+
+      .glass-stat-number {
+        font-size: 32px;
+      }
+
+      .about-counter-section h2 {
+        font-size: 26px;
+      }
+
+      .final-cta-section h2 {
+        font-size: 26px;
+      }
+    }
+  </style>
 </head>
 
 <body>
@@ -32,152 +300,404 @@
   <!-- Reusable Header Navigation Placeholder -->
   <div id="header-placeholder"></div>
 
-  <section class="hero-wrap hero-wrap-2" style="background-image: url('images/bg_2.jpg');"
+  <section class="hero-wrap hero-wrap-2 d-flex align-items-center justify-content-center"
+    style="background-image: url('images/aboutHero.png'); min-height: 500px; position: relative;"
     data-stellar-background-ratio="0.5">
-    <div class="overlay"></div>
-    <div class="container">
-      <div class="row no-gutters slider-text align-items-end">
-        <div class="col-md-9 ftco-animate pb-5">
-          <p class="breadcrumbs mb-2"><span class="mr-2"><a href="index.html">Home <i class="fa fa-chevron-right"
-                  style="font-size: 10px;"></i></a></span> <span>About us <i class="fa fa-chevron-right"
-                style="font-size: 10px;"></i></span></p>
-          <h1 class="mb-0 bread">About Us</h1>
+    <div class="overlay" style="background: rgba(11, 19, 43, 0.85);"></div>
+    <div class="container" style="position: relative; z-index: 10;">
+      <div class="row no-gutters slider-text align-items-center justify-content-center">
+        <div class="col-md-10 text-center ftco-animate pb-5 about-hero-content">
+          <p class="breadcrumbs mb-2"
+            style="font-weight: 600; text-transform: uppercase; font-size: 13px; letter-spacing: 2px;">
+            <span class="mr-2"><a href="index.html" style="color: rgba(255,255,255,0.7);">Home <i
+                  class="fa fa-chevron-right" style="font-size: 9px; margin-left: 5px;"></i></a></span>
+            <span style="color: var(--accent-magenta);">About Us</span>
+          </p>
+          <h1 class="mb-3 bread font-weight-bold"
+            style="color: #fff; font-size: 44px; text-transform: uppercase; letter-spacing: 1px;">About Divy Jyot
+            Foundation</h1>
+          <div class="about-hero-divider mx-auto"></div>
+          <p class="lead text-white-50 mb-4 mx-auto" style="max-width: 700px; font-size: 18px; line-height: 1.6;">
+            "Building a safer and healthier Gujarat through consumer awareness, food safety education, and community
+            action."
+          </p>
+          <p><a href="#about-dashboard-section" class="btn btn-secondary py-3 px-4"
+              style="border-radius: 30px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; font-size: 13px;">Explore
+              Our Work</a></p>
         </div>
       </div>
     </div>
+    <!-- Scroll Indicator -->
+    <div class="scroll-indicator-wrap" style="bottom: 70px;">
+      <div class="scroll-mouse">
+        <div class="scroll-wheel"></div>
+      </div>
+      <span class="text-white-50 small"
+        style="font-size: 10px; text-transform: uppercase; letter-spacing: 1.5px;">Scroll Down</span>
+    </div>
+
+    <!-- Wave Shape Divider -->
+    <div class="custom-shape-divider-bottom-168903">
+      <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path
+          d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1130.5,120,1056.59,111.45,985.66,92.83Z"
+          class="shape-fill"></path>
+      </svg>
+    </div>
   </section>
 
-  <section class="ftco-section ftco-no-pt ftco-no-pb">
+  <section class="ftco-section bg-white" style="padding: 7em 0 4em 0;">
     <div class="container">
-      <div class="row d-flex no-gutters">
-        <div class="col-md-6 d-flex order-md-last">
-          <div
-            class="img img-video d-flex align-self-stretch align-items-center justify-content-center justify-content-md-center mb-4 mb-sm-0"
-            style="background-image:url(images/about-1.jpg);">
-          </div>
-        </div>
-        <div class="col-md-6 pr-md-5 py-md-5">
-          <div class="heading-section pt-md-5 mb-4">
-            <span class="subheading">About us</span>
-            <h2 class="mb-2">Our Vision for a Safer Gujarat</h2>
-            <p>Our Vision is to create a Gujarat where every citizen has access to safe, authentic, hygienic, and
-              unadulterated food. We work tirelessly to eliminate food fraud and protect public health through strict
-              regulatory awareness and proactive consumer support.</p>
-            <h4 class="mt-4">Why Our Campaign Matters</h4>
-            <p>Food Adulteration is a severe hazard that leads to:
-              <br><span class="fa fa-circle text-primary" style="font-size: 8px; vertical-align: middle;"></span>
-              Serious health complications
-              <br><span class="fa fa-circle text-primary" style="font-size: 8px; vertical-align: middle;"></span> Food
-              borne illnesses
-              <br><span class="fa fa-circle text-primary" style="font-size: 8px; vertical-align: middle;"></span>
-              Long-term health risks
-              <br><span class="fa fa-circle text-primary" style="font-size: 8px; vertical-align: middle;"></span>
-              Consumer deception
-              <br><span class="fa fa-circle text-primary" style="font-size: 8px; vertical-align: middle;"></span>
-              Economic losses to honest producers
-              <br><span class="fa fa-circle text-primary" style="font-size: 8px; vertical-align: middle;"></span>
-              Reduced public trust in food systems
+      <div class="row align-items-center mb-5 pb-3">
+        <div class="col-lg-6 pr-lg-5 mb-4 mb-lg-0 ftco-animate">
+          <div class="heading-section">
+            <span class="pillars-title-badge">About Us</span>
+            <h2 class="mb-4 font-weight-bold" style="color: var(--primary-navy); font-size: 34px; line-height: 1.2;">
+              Protecting Consumers & Food Safety</h2>
+
+            <p class="lead-text font-weight-bold"
+              style="color: var(--primary-navy); font-size: 18px; line-height: 1.6; margin-bottom: 20px;">
+              Divy Jyot Foundation is a non-profit organization committed to protecting consumers and promoting food
+              safety awareness throughout Gujarat.
             </p>
-            <p><a href="volunteer.html" class="btn btn-secondary">Become a Volunteer</a></p>
+
+            <blockquote class="highlight-quote">
+              "The Foundation believes that safe food is a basic right and that every citizen deserves protection from
+              adulterated and unsafe food products."
+            </blockquote>
+
+            <p class="mb-0" style="font-size: 15px; line-height: 1.7; color: var(--text-muted);">
+              Through education, advocacy, and community engagement, we work to create awareness about food safety and
+              empower consumers to make informed choices.
+            </p>
+          </div>
+        </div>
+
+        <div class="col-lg-6 text-center text-lg-right ftco-animate">
+          <img src="logo.jpeg" alt="Divy Jyot Foundation" class="img-fluid rounded-circle shadow-lg"
+            style="max-width: 320px; border: 8px solid rgba(27, 46, 83, 0.03); object-fit: cover;">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Storytelling Dashboard Console -->
+  <section class="ftco-section bg-light" id="about-dashboard-section" style="padding: 6em 0;">
+    <div class="container">
+      <div class="row justify-content-center pb-3">
+        <div class="col-md-8 heading-section text-center ftco-animate">
+          <span class="subheading"
+            style="color: var(--accent-magenta); text-transform: uppercase; font-weight: 700; letter-spacing: 2px; font-size: 13px; display: block; margin-bottom: 12px;">What
+            Drives Us</span>
+          <h2 class="mb-4 font-weight-bold" style="color: var(--primary-navy); font-size: 34px; line-height: 1.2;">Who
+            We Are & What We Value</h2>
+
+          <!-- Tab Navigation -->
+          <div class="about-tabs-nav mt-3">
+            <button class="tab-nav-btn active" onclick="switchAboutTab('tab-pillars')">Our 4 Pillars</button>
+            <button class="tab-nav-btn" onclick="switchAboutTab('tab-mission')">Mission & Vision</button>
+            <button class="tab-nav-btn" onclick="switchAboutTab('tab-values')">Core Values</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Panel 1: Pillars -->
+      <div class="row about-tab-panel mt-4" id="tab-pillars" style="display: flex;">
+        <div class="col-md-6 col-lg-3 mb-4 ftco-animate">
+          <div class="pillar-card pc-1">
+            <div class="pillar-icon-box">
+              <span class="fa fa-shield"></span>
+            </div>
+            <h5>Consumer Rights</h5>
+            <p class="text-muted small mb-0" style="line-height: 1.5;">Protecting public health from adulterated food
+              products.</p>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3 mb-4 ftco-animate">
+          <div class="pillar-card pc-2">
+            <div class="pillar-icon-box">
+              <span class="fa fa-graduation-cap"></span>
+            </div>
+            <h5>Public Education</h5>
+            <p class="text-muted small mb-0" style="line-height: 1.5;">Practical guides to identify common adulterants.
+            </p>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3 mb-4 mb-md-0 ftco-animate">
+          <div class="pillar-card pc-3">
+            <div class="pillar-icon-box">
+              <span class="fa fa-bullhorn"></span>
+            </div>
+            <h5>State Advocacy</h5>
+            <p class="text-muted small mb-0" style="line-height: 1.5;">Collaborating with authorities for regulatory
+              compliance.</p>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3 ftco-animate">
+          <div class="pillar-card pc-4">
+            <div class="pillar-icon-box">
+              <span class="fa fa-users"></span>
+            </div>
+            <h5>Community Outreach</h5>
+            <p class="text-muted small mb-0" style="line-height: 1.5;">Organizing testing campaigns across major cities.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Panel 2: Mission & Vision -->
+      <div class="row about-tab-panel mt-4" id="tab-mission" style="display: none;">
+        <div class="col-md-6 mb-4 mb-md-0">
+          <div class="mv-panel">
+            <div class="mv-badge mv-badge-pink">Our Mission</div>
+            <h3 class="font-weight-bold mb-3" style="color: var(--primary-navy); font-size: 22px; line-height: 1.4;">A
+              safe, healthy and adulteration-free Gujarat.</h3>
+            <p style="font-size: 15px; line-height: 1.7; color: var(--text-muted); margin-bottom: 0;">
+              We dedicate our efforts towards eradicating toxic adulterants and food fraud, ensuring every household
+              receives quality and safe sustenance.
+            </p>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="mv-panel mv-panel-navy">
+            <div class="mv-badge mv-badge-cyan">Our Vision</div>
+            <h3 class="font-weight-bold mb-3" style="color: #fff; font-size: 22px; line-height: 1.4;">Access to safe,
+              authentic, hygienic, and unadulterated food.</h3>
+            <p style="font-size: 15px; line-height: 1.7; color: #cbd5e1; margin-bottom: 0;">
+              A future where transparency prevails in the food supply chain and public health is preserved by proactive,
+              educated consumers.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Panel 3: Core Values -->
+      <div class="row about-tab-panel mt-4" id="tab-values" style="display: none;">
+        <div class="col-lg-7 col-md-12 mb-4">
+          <div class="value-card-asymmetric vc-1">
+            <div class="value-icon-container">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                <path d="m9 11 2 2 4-4" />
+              </svg>
+            </div>
+            <h4>Public Health First</h4>
+            <p class="text-muted">Consumer Health and Safety Remain our Highest Priority.</p>
+          </div>
+        </div>
+
+        <div class="col-lg-5 col-md-12 mb-4">
+          <div class="value-card-asymmetric vc-2">
+            <div class="value-icon-container">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8" />
+                <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                <line x1="11" y1="8" x2="11" y2="14" />
+                <line x1="8" y1="11" x2="14" y2="11" />
+              </svg>
+            </div>
+            <h4>Transparency</h4>
+            <p class="text-muted">Promoting Honesty and Accountability within the Food ecosystem.</p>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 mb-4">
+          <div class="value-card-asymmetric vc-3">
+            <div class="value-icon-container">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
+                <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
+              </svg>
+            </div>
+            <h4>Education</h4>
+            <p class="text-muted">Creating awareness through practical and accessible information.</p>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 mb-4">
+          <div class="value-card-asymmetric vc-4">
+            <div class="value-icon-container">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                <circle cx="9" cy="7" r="4" />
+                <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+                <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+              </svg>
+            </div>
+            <h4>Community Participation</h4>
+            <p class="text-muted">Encouraging Citizens to become active participants in Food safety initiatives.</p>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-12 mb-4">
+          <div class="value-card-asymmetric vc-5">
+            <div class="value-icon-container">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path
+                  d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
+              </svg>
+            </div>
+            <h4>Social Responsibility</h4>
+            <p class="text-muted">Working together to build healthier Communities.</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="ftco-section">
+  <!-- Premium Objectives Grid -->
+  <section class="ftco-section bg-white" style="padding: 7em 0 5em 0;">
     <div class="container">
-      <div class="row pb-5">
-        <div class="col-md-10 heading-section text-left ftco-animate">
-          <span class="subheading">Welcome to Divy Jyot Foundation</span>
-          <h2>Empowering Consumers for a Healthier Gujarat</h2>
+      <div class="row justify-content-center pb-5">
+        <div class="col-md-10 heading-section text-center ftco-animate">
+          <span class="subheading"
+            style="color: var(--accent-magenta); text-transform: uppercase; font-weight: 700; letter-spacing: 2px; font-size: 13px; display: block; margin-bottom: 8px;">Target
+            Goals</span>
+          <h2 class="mb-2 font-weight-bold" style="color: var(--primary-navy); font-size: 34px; line-height: 1.2;">Key
+            Objectives We Drive</h2>
+          <p class="text-muted mb-0" style="font-size: 15px; max-width: 650px; margin: 0 auto;">Our priorities guiding
+            the campaign toward food safety and consumer health across Gujarat.</p>
         </div>
       </div>
+
       <div class="row">
-        <div class="col-md-3 services-2 w-100 text-center">
-          <div class="icon icon-1 d-flex align-items-center justify-content-center"><span
-              class="flaticon-volunteer"></span></div>
-          <div class="text">
-            <h4>Complaint Aid</h4>
-            <p>Guiding consumers step-by-step on filing complaints against adulteration and violations.</p>
+        <!-- Objective 1 -->
+        <div class="col-lg-4 col-md-6 mb-4 ftco-animate">
+          <div class="goal-card-premium">
+            <div class="goal-number">01</div>
+            <div class="goal-icon-wrap">
+              <span class="fa fa-shield"></span>
+            </div>
+            <h4>Reduce Food Adulteration</h4>
+            <p>Eradicating toxic food fraud, chemical additives, and dangerous contamination across Gujarat.</p>
           </div>
         </div>
-        <div class="col-md-3 services-2 w-100 text-center">
-          <div class="icon icon-2 d-flex align-items-center justify-content-center"><span
-              class="flaticon-stethoscope"></span></div>
-          <div class="text">
-            <h4>Regulations</h4>
-            <p>Promoting awareness of standard food safety regulations and consumer protection rights.</p>
+        <!-- Objective 2 -->
+        <div class="col-lg-4 col-md-6 mb-4 ftco-animate">
+          <div class="goal-card-premium">
+            <div class="goal-number">02</div>
+            <div class="goal-icon-wrap">
+              <span class="fa fa-graduation-cap"></span>
+            </div>
+            <h4>Increase Public Awareness</h4>
+            <p>Providing citizens with practical kits and resources to identify adulterated food at home.</p>
           </div>
         </div>
-        <div class="col-md-3 services-2 w-100 text-center">
-          <div class="icon icon-3 d-flex align-items-center justify-content-center"><span class="flaticon-bread"></span>
-          </div>
-          <div class="text">
-            <h4>Outreach</h4>
-            <p>Organizing workshops, seminars, events, and testing campaigns across Gujarat.</p>
+        <!-- Objective 3 -->
+        <div class="col-lg-4 col-md-6 mb-4 ftco-animate">
+          <div class="goal-card-premium">
+            <div class="goal-number">03</div>
+            <div class="goal-icon-wrap">
+              <span class="fa fa-gavel"></span>
+            </div>
+            <h4>Support Regulatory Actions</h4>
+            <p>Collaborating with local food safety inspectors and aiding in swift enforcement of standards.</p>
           </div>
         </div>
-        <div class="col-md-3 services-2 w-100 text-center">
-          <div class="icon icon-4 d-flex align-items-center justify-content-center"><span
-              class="flaticon-university"></span></div>
-          <div class="text">
-            <h4>Volunteers</h4>
-            <p>Building a robust network of citizen volunteers committed to safer food environments.</p>
+        <!-- Objective 4 -->
+        <div class="col-lg-4 col-md-6 mb-4 ftco-animate">
+          <div class="goal-card-premium">
+            <div class="goal-number">04</div>
+            <div class="goal-icon-wrap">
+              <span class="fa fa-bullhorn"></span>
+            </div>
+            <h4>Spread Safety Guidelines</h4>
+            <p>Educating street vendors, restaurants, and compliance staff on proper hygiene regulations.</p>
+          </div>
+        </div>
+        <!-- Objective 5 -->
+        <div class="col-lg-4 col-md-6 mb-4 ftco-animate">
+          <div class="goal-card-premium">
+            <div class="goal-number">05</div>
+            <div class="goal-icon-wrap">
+              <span class="fa fa-heartbeat"></span>
+            </div>
+            <h4>Protect Public Health</h4>
+            <p>Combating long-term diseases caused by carcinogenic adulterated food items.</p>
+          </div>
+        </div>
+        <!-- Objective 6 -->
+        <div class="col-lg-4 col-md-6 mb-4 ftco-animate">
+          <div class="goal-card-premium">
+            <div class="goal-number">06</div>
+            <div class="goal-icon-wrap">
+              <span class="fa fa-briefcase"></span>
+            </div>
+            <h4>Responsible Business</h4>
+            <p>Inspiring food producers to perform testing, maintain trust, and adhere to clean ethics.</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="ftco-counter" id="section-counter">
+  <section class="ftco-section about-counter-section" id="section-counter"
+    style="position: relative; overflow: hidden; background: linear-gradient(rgba(11, 19, 43, 0.92), rgba(11, 19, 43, 0.92)), url('images/bg_1.jpg') center center no-repeat; background-size: cover; padding: 8em 0 !important;">
     <div class="container">
-      <div class="row">
-        <div class="col-md-3 mb-5 mb-md-0 text-center text-md-left">
-          <h2 class="font-weight-bold" style="color: #fff; font-size: 22px;">Join us in creating a safe food environment
-            in Gujarat</h2>
-          <a href="contact.html" class="btn btn-white btn-outline-white">Support Now</a>
+      <div class="row align-items-center">
+        <div class="col-lg-5 mb-5 mb-lg-0 text-center text-lg-left ftco-animate">
+          <span class="subheading"
+            style="color: var(--accent-magenta); text-transform: uppercase; letter-spacing: 1.5px; font-weight: 700; font-size: 13px; display: block; margin-bottom: 10px;">Our
+            Impact</span>
+          <h2 class="font-weight-bold mt-2" style="color: #fff; font-size: 38px; line-height: 1.2;">Together, we're
+            creating a safer Gujarat.</h2>
+          <p class="mt-3" style="color: #cbd5e1; font-size: 16px; line-height: 1.6; margin-bottom: 30px;">
+            Your support fuels testing kits, public awareness camps, and fast guidance for filing food safety
+            complaints.
+          </p>
+          <a href="donate.html" class="btn btn-secondary py-3 px-4"
+            style="border-radius: 30px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; font-size: 13px;">Support
+            Our Work</a>
         </div>
-        <div class="col-md-9">
+
+        <div class="col-lg-7">
           <div class="row">
-            <div class="col-md-6 col-lg-3 d-flex justify-content-center counter-wrap ftco-animate">
-              <div class="block-18 text-center">
-                <div class="text">
-                  <strong class="number" data-number="1200">0</strong>
+            <div class="col-sm-6 mb-4 ftco-animate">
+              <div class="glass-stat-card">
+                <div class="glass-stat-number d-flex align-items-baseline">
+                  <span class="counter-value number" data-number="1200">0</span>
+                  <span style="font-size: 30px; margin-left: 2px;">+</span>
                 </div>
-                <div class="text">
-                  <span>Active Members</span>
-                </div>
+                <div class="glass-stat-label">Active Members</div>
               </div>
             </div>
-            <div class="col-md-6 col-lg-3 d-flex justify-content-center counter-wrap ftco-animate">
-              <div class="block-18 text-center">
-                <div class="text">
-                  <strong class="number" data-number="150">0</strong>
+
+            <div class="col-sm-6 mb-4 ftco-animate">
+              <div class="glass-stat-card">
+                <div class="glass-stat-number d-flex align-items-baseline">
+                  <span class="counter-value number" data-number="150">0</span>
+                  <span style="font-size: 30px; margin-left: 2px;">+</span>
                 </div>
-                <div class="text">
-                  <span>Dedicated Volunteers</span>
-                </div>
+                <div class="glass-stat-label">Dedicated Volunteers</div>
               </div>
             </div>
-            <div class="col-md-6 col-lg-3 d-flex justify-content-center counter-wrap ftco-animate">
-              <div class="block-18 text-center">
-                <div class="text">
-                  <strong class="number" data-number="500000">0</strong>
+
+            <div class="col-sm-6 mb-4 mb-sm-0 ftco-animate">
+              <div class="glass-stat-card">
+                <div class="glass-stat-number d-flex align-items-baseline">
+                  <span class="counter-value number" data-number="500000">0</span>
+                  <span style="font-size: 30px; margin-left: 2px;">+</span>
                 </div>
-                <div class="text">
-                  <span>Funds Raised (₹)</span>
-                </div>
+                <div class="glass-stat-label">People Reached</div>
               </div>
             </div>
-            <div class="col-md-6 col-lg-3 d-flex justify-content-center counter-wrap ftco-animate">
-              <div class="block-18 text-center">
-                <div class="text">
-                  <strong class="number" data-number="350">0</strong>
+
+            <div class="col-sm-6 ftco-animate">
+              <div class="glass-stat-card">
+                <div class="glass-stat-number d-flex align-items-baseline">
+                  <span class="counter-value number" data-number="350">0</span>
+                  <span style="font-size: 30px; margin-left: 2px;">+</span>
                 </div>
-                <div class="text">
-                  <span>Generous Donors</span>
-                </div>
+                <div class="glass-stat-label">Generous Donors</div>
               </div>
             </div>
           </div>
@@ -186,147 +706,25 @@
     </div>
   </section>
 
-  <section class="ftco-section bg-light" style="padding: 5em 0;">
+  <section class="ftco-section bg-light" style="padding: 6em 0;">
     <div class="container">
-      <div class="row justify-content-center pb-5">
-        <div class="col-md-7 heading-section text-center ftco-animate">
-          <span class="subheading">Our Footprint</span>
+      <div class="row justify-content-center pb-4">
+        <div class="col-md-8 heading-section text-center ftco-animate">
+          <span class="subheading"
+            style="color: var(--primary-cyan); text-transform: uppercase; font-weight: 700; letter-spacing: 1px; font-size: 13px;">Our
+            Footprint</span>
           <h2>Active Outreach Regions in Gujarat</h2>
-          <p>Hover over the active cities (glowing orange markers) to see volunteer, member, and campaign statistics for
-            that area.</p>
+          <p class="text-muted">Divy Jyot Foundation is actively educating communities and testing food safety across
+            Gujarat. Hover over any region circle below to see outreach members and campaigns.</p>
         </div>
       </div>
       <div class="row">
         <div class="col-md-12">
-          <div id="heatmap-map"
-            style="height: 550px; width: 100%; border-radius: 12px; box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1); border: 4px solid #fff; position: relative;">
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="ftco-section testimony-section">
-    <div class="overlay"></div>
-    <div class="container">
-      <div class="row justify-content-center pb-5">
-        <div class="col-md-7 heading-section heading-section-white text-center ftco-animate">
-          <span class="subheading">Testimonials</span>
-          <h2>Feedback & Public Impact</h2>
-        </div>
-      </div>
-      <div class="row ftco-animate">
-        <div class="col-md-12">
-          <div class="carousel-testimony owl-carousel">
-            <div class="item">
-              <div class="testimony-wrap d-flex">
-                <div class="user-img" style="background-image: url(images/person_1.jpg)">
-                </div>
-                <div class="text pl-4">
-                  <span class="quote d-flex align-items-center justify-content-center">
-                    <i class="fa fa-quote-left"></i>
-                  </span>
-                  <p class="rate">
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                  </p>
-                  <p>I was able to report a local sweet shop selling adulterated milk with Divy Jyot's assistance.
-                    Prompt action was taken by authorities!</p>
-                  <p class="name">Rajesh Patel</p>
-                  <span class="position">Ahmedabad Resident</span>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="testimony-wrap d-flex">
-                <div class="user-img" style="background-image: url(images/person_2.jpg)">
-                </div>
-                <div class="text pl-4">
-                  <span class="quote d-flex align-items-center justify-content-center">
-                    <i class="fa fa-quote-left"></i>
-                  </span>
-                  <p class="rate">
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                  </p>
-                  <p>Their workshop in Vadodara opened our eyes to how common adulteration is in spices. The rapid home
-                    tests they taught us are simple and helpful.</p>
-                  <p class="name">Meera Shah</p>
-                  <span class="position">Vadodara Resident</span>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="testimony-wrap d-flex">
-                <div class="user-img" style="background-image: url(images/person_3.jpg)">
-                </div>
-                <div class="text pl-4">
-                  <span class="quote d-flex align-items-center justify-content-center">
-                    <i class="fa fa-quote-left"></i>
-                  </span>
-                  <p class="rate">
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                  </p>
-                  <p>A great initiative for public health in Gujarat. Educating school and college students creates a
-                    long-term defense against food fraud.</p>
-                  <p class="name">Dr. Amit Vyas</p>
-                  <span class="position">Food Safety Analyst</span>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="testimony-wrap d-flex">
-                <div class="user-img" style="background-image: url(images/person_4.jpg)">
-                </div>
-                <div class="text pl-4">
-                  <span class="quote d-flex align-items-center justify-content-center">
-                    <i class="fa fa-quote-left"></i>
-                  </span>
-                  <p class="rate">
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                  </p>
-                  <p>Now I check our cooking oil and milk daily using the testing kits they provided. It keeps my family
-                    safe and gives us peace of mind.</p>
-                  <p class="name">Sneha Mehta</p>
-                  <span class="position">Housewife, Surat</span>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="testimony-wrap d-flex">
-                <div class="user-img" style="background-image: url(images/person_1.jpg)">
-                </div>
-                <div class="text pl-4">
-                  <span class="quote d-flex align-items-center justify-content-center">
-                    <i class="fa fa-quote-left"></i>
-                  </span>
-                  <p class="rate">
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
-                  </p>
-                  <p>Very professional team. They helped us understand our rights as consumers when we faced food
-                    deception in a local market.</p>
-                  <p class="name">Karan Joshi</p>
-                  <span class="position">Rajkot Consumer</span>
-                </div>
-              </div>
+          <div class="row no-gutters map-dashboard-container"
+            style="border: 1px solid rgba(0, 0, 0, 0.05); border-radius: 16px; overflow: hidden; box-shadow: 0 10px 30px rgba(27, 46, 83, 0.04);">
+            <!-- Full-width Map -->
+            <div class="col-12" style="position: relative;">
+              <div id="heatmap-map" style="height: 550px; width: 100%;"></div>
             </div>
           </div>
         </div>
@@ -334,21 +732,28 @@
     </div>
   </section>
 
-  <section class="ftco-hireme bg-secondary">
-    <div class="container">
-      <div class="row justify-content-between">
-        <div class="col-md-8 col-lg-8 d-flex align-items-center">
-          <div class="w-100">
-            <h2>Make a Difference in Creating a Safer Food Environment</h2>
-          </div>
-        </div>
-        <div class="col-md-4 col-lg-4 d-flex align-items-center justify-content-end">
-          <p class="mb-0"><a href="volunteer.html" class="btn btn-primary py-3 px-4">Become A Volunteer</a></p>
-        </div>
+
+  <section class="final-cta-section" id="final-cta-block">
+    <div class="final-cta-pattern"></div>
+    <div class="final-cta-shape"></div>
+    <div class="final-cta-shape-2"></div>
+    <div class="container text-center ftco-animate" style="position: relative; z-index: 5;">
+      <span class="subheading"
+        style="color: var(--accent-magenta); text-transform: uppercase; letter-spacing: 2px; font-weight: 700; font-size: 13px; display: block; margin-bottom: 15px;">Join
+        the Movement</span>
+      <h2 class="font-weight-bold mb-3"
+        style="color: #fff; font-size: 38px; line-height: 1.2; max-width: 800px; margin: 0 auto;">Make a Difference in
+        Creating a Safer Food Environment</h2>
+      <p class="mb-5 text-white-50 mx-auto" style="max-width: 650px; font-size: 16px; line-height: 1.7;">
+        Join our growing network of citizens, volunteers and supporters working toward a healthier and Adulteration-free
+        Gujarat. Together we can protect future generations.
+      </p>
+      <div class="d-sm-flex justify-content-center align-items-center">
+        <a href="volunteer.html" class="btn-cta-pink mr-sm-3 mb-3 mb-sm-0">Become a Volunteer</a>
+        <a href="donate.html" class="btn-cta-outline">Support Our Cause</a>
       </div>
     </div>
   </section>
-
 
   <!-- Reusable Footer Placeholder -->
   <div id="footer-placeholder"></div>
@@ -379,6 +784,35 @@
   <script src="js/scrollax.min.js"></script>
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script>
+    function switchAboutTab(tabId) {
+      // Hide all tab panels with transitions
+      var panels = document.querySelectorAll('.about-tab-panel');
+      panels.forEach(function (panel) {
+        panel.style.display = 'none';
+        panel.classList.remove('fade-in-up');
+      });
+
+      // Deactivate all tab buttons
+      var buttons = document.querySelectorAll('.tab-nav-btn');
+      buttons.forEach(function (btn) {
+        btn.classList.remove('active');
+      });
+
+      // Show active panel and button
+      var activePanel = document.getElementById(tabId);
+      if (activePanel) {
+        activePanel.style.display = 'flex';
+        setTimeout(function () {
+          activePanel.classList.add('fade-in-up');
+        }, 50);
+      }
+
+      var activeBtn = document.querySelector('[onclick="switchAboutTab(\'' + tabId + '\')"]');
+      if (activeBtn) {
+        activeBtn.classList.add('active');
+      }
+    }
+
     document.addEventListener("DOMContentLoaded", function () {
       if (typeof L === 'undefined') return;
 
@@ -396,8 +830,8 @@
       }).addTo(map);
 
       var regions = [
-        { name: "Ahmedabad", lat: 23.0225, lng: 72.5714, members: 550, campaigns: 12, size: 35000 },
-        { name: "Surat", lat: 21.1702, lng: 72.8311, members: 420, campaigns: 8, size: 28000 },
+        { name: "Ahmedabad", lat: 23.0225, lng: 72.5714, members: 550, campaigns: 12, size: 32000 },
+        { name: "Surat", lat: 21.1702, lng: 72.8311, members: 420, campaigns: 8, size: 26000 },
         { name: "Vadodara", lat: 22.3072, lng: 73.1812, members: 310, campaigns: 7, size: 22000 },
         { name: "Rajkot", lat: 22.3039, lng: 70.8022, members: 280, campaigns: 6, size: 20000 },
         { name: "Gandhinagar", lat: 23.2156, lng: 72.6369, members: 180, campaigns: 5, size: 16000 },
@@ -406,75 +840,57 @@
         { name: "Bhuj (Kutch)", lat: 23.2420, lng: 69.6669, members: 80, campaigns: 2, size: 9000 }
       ];
 
-      var info = L.control({ position: 'topright' });
-
-      info.onAdd = function (map) {
-        this._div = L.DomUtil.create('div', 'info-control');
-        this.update();
-        return this._div;
-      };
-
-      info.update = function (props) {
-        this._div.innerHTML = '<h5 style="margin:0 0 10px; font-weight:700; color:#d81b60; font-size:16px;">Gujarat Outreach Insights</h5>' +
-          (props ?
-            '<div style="font-size:14px; line-height: 1.5;">' +
-            '<strong>Region:</strong> <span style="color:#0ea5e9; font-weight:700;">' + props.name + '</span><br>' +
-            '<strong>Active Members:</strong> ' + props.members + '<br>' +
-            '<strong>Campaigns Done:</strong> ' + props.campaigns + '</div>'
-            : '<span style="font-size:13px; color:#666;">Hover over an active region circle</span>');
-      };
-
-      info.addTo(map);
-
-      var style = document.createElement('style');
-      style.innerHTML = `
-      .info-control {
-        padding: 15px;
-        background: rgba(255, 255, 255, 0.95);
-        backdrop-filter: blur(5px);
-        box-shadow: 0 5px 15px rgba(0,0,0,0.15);
-        border-radius: 8px;
-        border: 1px solid rgba(0,0,0,0.1);
-        min-width: 220px;
-        font-family: "Montserrat", Arial, sans-serif;
-      }
-    `;
-      document.head.appendChild(style);
-
       regions.forEach(function (r) {
+        // Create Circle Marker
         var circle = L.circle([r.lat, r.lng], {
-          color: '#1b2e53',
+          color: '#d81b60',
           fillColor: '#d81b60',
-          fillOpacity: 0.5,
+          fillOpacity: 0.22,
           radius: r.size,
-          weight: 1.5
+          weight: 1.8
         }).addTo(map);
 
-        circle.on('mouseover', function (e) {
-          circle.setStyle({
-            fillColor: '#1b2e53',
-            fillOpacity: 0.75,
-            weight: 2.5
-          });
-          info.update(r);
+        // Bind custom styled Leaflet Tooltip for instant hover action
+        circle.bindTooltip(`
+          <div style="font-family: 'Inter', sans-serif; padding: 6px 4px; min-width: 170px;">
+            <h6 style="color: var(--accent-magenta); font-weight: 700; margin: 0 0 6px 0; font-size: 14px; border-bottom: 1px solid rgba(0,0,0,0.06); padding-bottom: 4px;">
+              <span class="fa fa-map-marker mr-1" style="color: var(--primary-navy);"></span>${r.name}
+            </h6>
+            <div style="font-size: 12.5px; color: var(--primary-navy); line-height: 1.6;">
+              <span class="fa fa-users mr-1" style="color: var(--secondary-cyan);"></span> <strong>Members:</strong> ${r.members}<br>
+              <span class="fa fa-bullhorn mr-1" style="color: var(--secondary-cyan);"></span> <strong>Campaigns:</strong> ${r.campaigns}
+            </div>
+          </div>
+        `, {
+          permanent: false,
+          direction: 'top',
+          opacity: 0.98,
+          offset: [0, -10],
+          className: 'custom-leaflet-tooltip'
         });
 
-        circle.on('mouseout', function (e) {
+        // Hover events for glowing visual effect
+        circle.on('mouseover', function () {
           circle.setStyle({
+            color: '#0ea5e9',
+            fillColor: '#0ea5e9',
+            fillOpacity: 0.38,
+            weight: 3.2
+          });
+        });
+
+        circle.on('mouseout', function () {
+          circle.setStyle({
+            color: '#d81b60',
             fillColor: '#d81b60',
-            fillOpacity: 0.5,
-            weight: 1.5
+            fillOpacity: 0.22,
+            weight: 1.8
           });
-          info.update();
-        });
-
-        circle.on('click', function (e) {
-          info.update(r);
         });
       });
     });
   </script>
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js" defer></script>
   <script src="js/components.js"></script>
   <script src="js/email-service.js"></script>
   <script src="js/main.js"></script>
