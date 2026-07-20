@@ -1,71 +1,148 @@
 /* ==========================================================================
-   Divy Jyot Foundation - Form Validation & EmailJS Integration Service
+   Divy Jyot Foundation - Form Validation & Web3Forms Integration Service
    ========================================================================== */
 
 // Base64 helper to decode keys at runtime, preventing simple inspection of raw credentials
 const decodeKey = (encodedStr) => {
+  if (!encodedStr || encodedStr.includes('YOUR_')) {
+    return '';
+  }
+  // If it's a standard UUID (contains hyphens), it's a raw key
+  if (encodedStr.includes('-')) {
+    return encodedStr.trim();
+  }
   try {
-    return atob(encodedStr);
+    const decoded = atob(encodedStr).trim();
+    // If the decoded key contains hyphens, it's a valid base64 encoded UUID
+    if (decoded.includes('-')) {
+      return decoded;
+    }
+    return encodedStr.trim();
   } catch (e) {
-    return encodedStr;
+    return encodedStr.trim(); 
   }
 };
 
-// Obfuscated Configuration (Base64 encoded to protect keys from search crawlers & casual inspector users)
-const EMAILJS_CONFIG_OBFUSCATED = {
-  PUBLIC_KEY: 'aHJTTHotaGFVaEg4MGhNQTk=',     // Decodes to: hrSLz-haUhH80hMA9
-  SERVICE_ID: 'c2VydmljZV9sejV0bnZ1',         // Decodes to: service_lz5tnvu
-  TEMPLATES: {
-    CONTACT_ORG: 'Y29udGFjdF9vcmc=',           // Decodes to: contact_org
-    CONTACT_USER: 'Y29udGFjdF91c2Vy',         // Decodes to: contact_user
-    VOLUNTEER_ORG: 'dm9sdW50ZWVyX29yZw==',     // Decodes to: volunteer_org
-    VOLUNTEER_USER: 'dm9sdW50ZWVyX3VzZXI=',   // Decodes to: volunteer_user
-    DONATE_ORG: 'ZG9uYXRlX29yZw==',           // Decodes to: donate_org
-    DONATE_USER: 'ZG9uYXRlX3VzZXI='           // Decodes to: donate_user
-  }
+// Obfuscated Configuration (Base64 encoded or raw Web3Forms Access Key)
+const WEB3FORMS_CONFIG_OBFUSCATED = {
+  ACCESS_KEY: 'c6652d9c-373f-4967-a0f6-308c3a7db3e9'
 };
 
 // Runtime configuration getter resolver
-const EMAILJS_CONFIG = {
-  get PUBLIC_KEY() { return decodeKey(EMAILJS_CONFIG_OBFUSCATED.PUBLIC_KEY); },
-  get SERVICE_ID() { return decodeKey(EMAILJS_CONFIG_OBFUSCATED.SERVICE_ID); },
-  TEMPLATES: {
-    get CONTACT_ORG() { return decodeKey(EMAILJS_CONFIG_OBFUSCATED.TEMPLATES.CONTACT_ORG); },
-    get CONTACT_USER() { return decodeKey(EMAILJS_CONFIG_OBFUSCATED.TEMPLATES.CONTACT_USER); },
-    get VOLUNTEER_ORG() { return decodeKey(EMAILJS_CONFIG_OBFUSCATED.TEMPLATES.VOLUNTEER_ORG); },
-    get VOLUNTEER_USER() { return decodeKey(EMAILJS_CONFIG_OBFUSCATED.TEMPLATES.VOLUNTEER_USER); },
-    get DONATE_ORG() { return decodeKey(EMAILJS_CONFIG_OBFUSCATED.TEMPLATES.DONATE_ORG); },
-    get DONATE_USER() { return decodeKey(EMAILJS_CONFIG_OBFUSCATED.TEMPLATES.DONATE_USER); }
-  }
+const WEB3FORMS_CONFIG = {
+  get ACCESS_KEY() { return decodeKey(WEB3FORMS_CONFIG_OBFUSCATED.ACCESS_KEY); }
 };
 
-// Check if EmailJS is properly configured
-const isEmailJSConfigured = () => {
-  const pk = EMAILJS_CONFIG.PUBLIC_KEY;
-  const sid = EMAILJS_CONFIG.SERVICE_ID;
+// Check if Web3Forms is properly configured
+const isWeb3FormsConfigured = () => {
+  const ak = WEB3FORMS_CONFIG.ACCESS_KEY;
   return (
-    pk &&
-    pk !== 'YOUR_EMAILJS_PUBLIC_KEY' &&
-    sid &&
-    sid !== 'YOUR_EMAILJS_SERVICE_ID'
+    ak &&
+    ak !== 'YOUR_BASE64_WEB3FORMS_ACCESS_KEY_HERE' &&
+    ak !== 'YOUR_WEB3FORMS_ACCESS_KEY_HERE' &&
+    ak.trim() !== ''
   );
 };
 
-// Initialize EmailJS if configured
+// Initialize Web3Forms warning if not configured
 (function () {
-  if (isEmailJSConfigured() && typeof emailjs !== 'undefined') {
-    emailjs.init(EMAILJS_CONFIG.PUBLIC_KEY);
-    console.log("EmailJS initialized successfully.");
+  if (isWeb3FormsConfigured()) {
+    console.log("Web3Forms integration is ready.");
   } else {
     console.warn(
-      "EmailJS is not configured. Form submissions will operate in SIMULATION MODE.\n" +
+      "Web3Forms is not configured. Form submissions will operate in SIMULATION MODE.\n" +
       "To set up active email deliveries:\n" +
-      "1. Register a free account at https://www.emailjs.com/\n" +
-      "2. Create a service and email templates.\n" +
-      "3. Populate keys inside 'js/email-service.js'."
+      "1. Get a free access key at https://web3forms.com/\n" +
+      "2. Populate ACCESS_KEY inside 'js/email-service.js' (raw or base64 encoded)."
     );
   }
 })();
+
+/**
+ * Reusable email sending function for Web3Forms API
+ * @param {string} subject - Email subject line
+ * @param {Object} data - Key-value payload of form fields
+ * @param {File} [fileAttachment] - Optional File object from file input
+ * @param {string} [fromName] - Optional custom sender name
+ * @returns {Promise<boolean>} - Resolves to true on success
+ */
+async function sendEmailWeb3Forms(subject, data, fileAttachment = null, fromName = "Divy Jyot Foundation") {
+  if (!isWeb3FormsConfigured()) {
+    // Simulation Mode
+    console.log(`[SIMULATION MODE] Submitting form: "${subject}"`, data);
+    if (fileAttachment) {
+      console.log(`[SIMULATION MODE] File attached:`, fileAttachment.name, `(${fileAttachment.size} bytes)`);
+    }
+    await new Promise(resolve => setTimeout(resolve, 1500));
+    return true;
+  }
+
+  const formData = new FormData();
+  formData.append("access_key", WEB3FORMS_CONFIG.ACCESS_KEY);
+  formData.append("subject", subject);
+  formData.append("from_name", fromName);
+
+  // Set replyto so reply emails go to the submitter directly
+  const submitterEmail = data["Email"] || data["Email Address"] || data["email"];
+  if (submitterEmail) {
+    formData.append("replyto", submitterEmail);
+    // Explicitly add 'email' parameter for Web3Forms Autoresponder support
+    formData.append("email", submitterEmail);
+  }
+
+  formData.append("redirect", ""); // Don't redirect, return JSON response
+
+  // Append other payload data
+  for (const [key, val] of Object.entries(data)) {
+    formData.append(key, val);
+  }
+
+  // Append attachment file if exists
+  if (fileAttachment) {
+    formData.append("attachment", fileAttachment);
+  }
+
+  let response = await fetch("https://api.web3forms.com/submit", {
+    method: "POST",
+    body: formData
+  });
+
+  // Handle Free Tier / Size Limits fallback: if status is 400 or 413 and we had an attachment, retry without it
+  if ((response.status === 400 || response.status === 413) && fileAttachment) {
+    console.warn(`Web3Forms returned status ${response.status}. Retrying submission without file attachment (likely size limit or Free plan limitation)...`);
+    const fallbackFormData = new FormData();
+    fallbackFormData.append("access_key", WEB3FORMS_CONFIG.ACCESS_KEY);
+    fallbackFormData.append("subject", subject + " (Screenshot Excluded)");
+    fallbackFormData.append("from_name", fromName);
+
+    if (submitterEmail) {
+      fallbackFormData.append("replyto", submitterEmail);
+      fallbackFormData.append("email", submitterEmail);
+    }
+    fallbackFormData.append("redirect", "");
+
+    for (const [key, val] of Object.entries(data)) {
+      fallbackFormData.append(key, val);
+    }
+    fallbackFormData.append("System Note", `Payment screenshot was attached by user but stripped because the file is too large (status 413) or the Web3Forms key is on the Free tier.`);
+
+    response = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      body: fallbackFormData
+    });
+  }
+
+  if (!response.ok) {
+    throw new Error(`HTTP error! status: ${response.status}`);
+  }
+
+  const result = await response.json();
+  if (result.success) {
+    return true;
+  } else {
+    throw new Error(result.message || "Failed to submit form to Web3Forms");
+  }
+}
 
 // Reusable validation helpers
 const validators = {
@@ -215,28 +292,16 @@ async function setupContactForm() {
     const originalText = submitBtn.value || submitBtn.innerText || "Send Message";
     setButtonLoading(submitBtn, true, originalText);
 
-    const templateParams = {
-      from_name: nameEl.value,
-      from_email: emailEl.value,
-      subject: subjectEl.value,
-      message: messageEl.value,
-      to_email: 'nitsanghani1@gmail.com'
+    const payload = {
+      "Name": nameEl.value,
+      "Email Address": emailEl.value,
+      "Subject": subjectEl.value,
+      "Message": messageEl.value
     };
 
     try {
-      if (isEmailJSConfigured() && typeof emailjs !== 'undefined') {
-        emailjs.init(EMAILJS_CONFIG.PUBLIC_KEY);
-        // Send notification to organization
-        await emailjs.send(EMAILJS_CONFIG.SERVICE_ID, EMAILJS_CONFIG.TEMPLATES.CONTACT_ORG, templateParams, EMAILJS_CONFIG.PUBLIC_KEY);
-        // Send auto-acknowledgement to submitter (if configured)
-        if (EMAILJS_CONFIG.TEMPLATES.CONTACT_USER && EMAILJS_CONFIG.TEMPLATES.CONTACT_USER !== 'YOUR_CONTACT_USER_TEMPLATE_ID') {
-          await emailjs.send(EMAILJS_CONFIG.SERVICE_ID, EMAILJS_CONFIG.TEMPLATES.CONTACT_USER, templateParams, EMAILJS_CONFIG.PUBLIC_KEY);
-        }
-      } else {
-        // Simulation delay
-        await new Promise(resolve => setTimeout(resolve, 1500));
-        console.log("SIMULATION SUCCESS - Contact Form Parameters:", templateParams);
-      }
+      const emailSubject = `Contact Form Inquiry from ${nameEl.value}: ${subjectEl.value}`;
+      await sendEmailWeb3Forms(emailSubject, payload, null, "Divy Jyot - Contact Form");
 
       showFormAlert(form, "success", "Thank you! Your message has reached Divy Jyot Foundation. We will connect with you shortly.");
       form.reset();
@@ -244,8 +309,8 @@ async function setupContactForm() {
       // Clear green borders after reset
       form.querySelectorAll(".form-control").forEach(el => el.classList.remove("is-valid"));
     } catch (err) {
-      console.error("EmailJS Error:", err);
-      showFormAlert(form, "error", "Failed to send message: " + (err.text || err.message || "Unknown error") + ". Please try again later.");
+      console.error("Form Submission Error:", err);
+      showFormAlert(form, "error", "Failed to send message: " + (err.message || "Unknown error") + ". Please try again later.");
     } finally {
       setButtonLoading(submitBtn, false, originalText);
     }
@@ -312,38 +377,26 @@ async function setupVolunteerForm() {
     const originalText = submitBtn.value || submitBtn.innerText || "Submit Registration";
     setButtonLoading(submitBtn, true, originalText);
 
-    const templateParams = {
-      from_name: nameEl.value,
-      from_email: emailEl.value,
-      phone: phoneEl.value,
-      city: cityEl.value,
-      contribution_area: areaEl.value,
-      message: messageEl.value || "None",
-      to_email: 'nitsanghani1@gmail.com'
+    const payload = {
+      "Name": nameEl.value,
+      "Email Address": emailEl.value,
+      "Phone Number": phoneEl.value,
+      "City/Town": cityEl.value,
+      "Preferred Area of Contribution": areaEl.value,
+      "Message/Notes": messageEl.value || "None"
     };
 
     try {
-      if (isEmailJSConfigured() && typeof emailjs !== 'undefined') {
-        emailjs.init(EMAILJS_CONFIG.PUBLIC_KEY);
-        // Send notification to organization
-        await emailjs.send(EMAILJS_CONFIG.SERVICE_ID, EMAILJS_CONFIG.TEMPLATES.VOLUNTEER_ORG, templateParams, EMAILJS_CONFIG.PUBLIC_KEY);
-        // Send auto-acknowledgement
-        if (EMAILJS_CONFIG.TEMPLATES.VOLUNTEER_USER && EMAILJS_CONFIG.TEMPLATES.VOLUNTEER_USER !== 'YOUR_VOLUNTEER_USER_TEMPLATE_ID') {
-          await emailjs.send(EMAILJS_CONFIG.SERVICE_ID, EMAILJS_CONFIG.TEMPLATES.VOLUNTEER_USER, templateParams, EMAILJS_CONFIG.PUBLIC_KEY);
-        }
-      } else {
-        // Simulation delay
-        await new Promise(resolve => setTimeout(resolve, 1500));
-        console.log("SIMULATION SUCCESS - Volunteer Form Parameters:", templateParams);
-      }
+      const emailSubject = `New Volunteer Registration: ${nameEl.value} (${cityEl.value})`;
+      await sendEmailWeb3Forms(emailSubject, payload, null, "Divy Jyot - Volunteer Form");
 
       showFormAlert(form, "success", "Registration successful! Thank you for volunteering to create an adulteration-free Gujarat. Our coordinator will contact you shortly.");
       form.reset();
 
       form.querySelectorAll(".form-control").forEach(el => el.classList.remove("is-valid"));
     } catch (err) {
-      console.error("EmailJS Error:", err);
-      showFormAlert(form, "error", "Registration failed: " + (err.text || err.message || "Unknown error") + ". Please try again.");
+      console.error("Form Submission Error:", err);
+      showFormAlert(form, "error", "Registration failed: " + (err.message || "Unknown error") + ". Please try again.");
     } finally {
       setButtonLoading(submitBtn, false, originalText);
     }
@@ -615,80 +668,55 @@ async function setupDonateForm(formId = "donate-form") {
       setFieldValidation(amountEl, true);
     }
 
-    // Validate Payment Screenshot File
-    const file = fileInput ? fileInput.files[0] : null;
-    if (!file) {
-      setFieldValidation(fileInput, false, "Please upload a proof of payment screenshot");
-      isFormValid = false;
-    } else {
-      setFieldValidation(fileInput, true);
-    }
-
     if (!isFormValid) return;
 
     const originalText = submitBtn.value || submitBtn.innerText || "Submit Donation Details";
     setButtonLoading(submitBtn, true, originalText);
 
-    // Convert file to Base64
-    let screenshotBase64 = "";
-    if (file) {
-      try {
-        screenshotBase64 = await new Promise((resolve, reject) => {
-          const reader = new FileReader();
-          reader.readAsDataURL(file);
-          reader.onload = () => resolve(reader.result);
-          reader.onerror = error => reject(error);
-        });
-      } catch (err) {
-        console.error("Error reading payment screenshot file:", err);
-      }
-    }
-
-    const templateParams = {
-      from_name: nameEl.value,
-      from_email: emailEl.value,
-      phone: phoneEl.value,
-      initiative: initiativeEl.value,
-      amount: amountEl.value,
-      payment_screenshot: screenshotBase64,
-      to_email: 'nitsanghani1@gmail.com'
+    const payload = {
+      "Name": nameEl.value,
+      "Email Address": emailEl.value,
+      "Phone Number": phoneEl.value,
+      "Support Initiative": initiativeEl.value,
+      "Donation Amount": `Rs. ${amountEl.value}`
     };
 
     try {
-      if (isEmailJSConfigured() && typeof emailjs !== 'undefined') {
-        emailjs.init(EMAILJS_CONFIG.PUBLIC_KEY);
-        // Send notification to organization
-        await emailjs.send(EMAILJS_CONFIG.SERVICE_ID, EMAILJS_CONFIG.TEMPLATES.DONATE_ORG, templateParams, EMAILJS_CONFIG.PUBLIC_KEY);
-        // Send auto-acknowledgement
-        if (EMAILJS_CONFIG.TEMPLATES.DONATE_USER && EMAILJS_CONFIG.TEMPLATES.DONATE_USER !== 'YOUR_DONATE_USER_TEMPLATE_ID') {
-          await emailjs.send(EMAILJS_CONFIG.SERVICE_ID, EMAILJS_CONFIG.TEMPLATES.DONATE_USER, templateParams, EMAILJS_CONFIG.PUBLIC_KEY);
-        }
-      } else {
-        // Simulation delay
-        await new Promise(resolve => setTimeout(resolve, 1500));
-        console.log("SIMULATION SUCCESS - Donation Form Parameters:", templateParams);
-      }
+      const emailSubject = `Donation Form Submitted: Rs. ${amountEl.value} by ${nameEl.value}`;
+      await sendEmailWeb3Forms(emailSubject, payload, null, "Divy Jyot - Donation Form");
 
-      showFormAlert(form, "success", "Donation details and proof of payment submitted successfully! Thank you for supporting Divy Jyot Foundation. We will verify and connect with you shortly.");
       form.reset();
       goToStep(1);
 
-      // Reset upload zone visuals
-      if (uploadZone) uploadZone.classList.remove("file-selected");
-      if (uploadMainText) uploadMainText.textContent = "Upload Payment Screenshot";
-      if (uploadSubText) uploadSubText.textContent = "Click or drag image file here (required)";
-
-      if (submitBtn) submitBtn.setAttribute("disabled", "true");
-      if (screenshotNextBtn) screenshotNextBtn.setAttribute("disabled", "true");
+      // Show Custom Success Modal prompting WhatsApp screenshot
+      const successModal = document.getElementById("donation-success-modal");
+      if (successModal) {
+        successModal.style.display = "flex";
+        setTimeout(() => {
+          const content = successModal.querySelector(".custom-modal-content");
+          if (content) content.style.transform = "scale(1)";
+        }, 50);
+      }
 
       form.querySelectorAll(".form-control").forEach(el => el.classList.remove("is-valid"));
     } catch (err) {
-      console.error("EmailJS Error:", err);
-      showFormAlert(form, "error", "Failed to submit donation: " + (err.text || err.message || "Unknown error") + ". Please try again.");
+      console.error("Form Submission Error:", err);
+      showFormAlert(form, "error", "Failed to submit donation: " + (err.message || "Unknown error") + ". Please try again.");
     } finally {
       setButtonLoading(submitBtn, false, originalText);
     }
   });
+
+  // Setup modal close handler once
+  const closeModalBtn = document.getElementById("close-success-modal-btn");
+  const successModal = document.getElementById("donation-success-modal");
+  if (closeModalBtn && successModal) {
+    closeModalBtn.addEventListener("click", function () {
+      successModal.style.display = "none";
+      const content = successModal.querySelector(".custom-modal-content");
+      if (content) content.style.transform = "scale(0.9)";
+    });
+  }
 }
 
 // --------------------------------------------------------------------------

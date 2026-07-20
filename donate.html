@@ -211,6 +211,7 @@
                     <option value="Creating Educational Materials">Creating Educational Materials</option>
                     <option value="Supporting Consumer Assistance">Supporting Consumer Assistance</option>
                     <option value="Expanding Rural Reach">Expanding Rural Reach</option>
+                    	<option value="Expanding Rural Reach">Other</option>
                   </select>
                 </div>
 
@@ -240,19 +241,19 @@
                 </div>
               </div>
 
-              <!-- STEP 2 CONTENT: UPI QR & SCREENSHOT UPLOAD -->
+              <!-- STEP 2 CONTENT: UPI QR & DETAILS SUBMISSION -->
               <div class="donation-step-content" data-step="2" style="display: none;">
                 <!-- QR payment container -->
                 <div class="form-group mb-3">
                   <label class="d-block mb-2">Scan & Pay via UPI</label>
                   <div class="qr-payment-container">
                     <div class="qr-image-wrap">
-                      <img src="images/payment_qr.png" alt="Payment QR Code">
+                      <img src="./images/QR.jpeg" alt="Payment QR Code">
                     </div>
                     <p class="text-muted mb-3" style="font-size: 12px; line-height: 1.45;">Scan this QR using any UPI
                       App (GPay, PhonePe, Paytm, etc.) to transfer your contribution amount.</p>
                     <div class="upi-id-badge" id="upi-badge" title="Click to copy UPI ID">
-                      <span class="mr-2">divyjyot@upi</span>
+                      <span class="mr-2">nitintrivedi027-1@oksbi</span>
                       <i class="fa fa-clone" style="font-size: 11px; opacity: 0.7;"></i>
                     </div>
                     <span id="copy-success-msg"
@@ -261,23 +262,11 @@
                   </div>
                 </div>
 
-                <!-- Payment Screenshot Upload -->
-                <div class="form-group mb-3">
-                  <label for="payment_screenshot">Upload Confirmation Screenshot *</label>
-                  <div class="payment-upload-zone" id="upload-zone">
-                    <i class="fa fa-cloud-upload upload-icon" id="upload-icon"></i>
-                    <div class="upload-label-main" id="upload-main-text">Upload Payment Screenshot</div>
-                    <div class="upload-label-sub" id="upload-sub-text">Click or drag image file here (required)</div>
-                    <input type="file" id="payment_screenshot" name="payment_screenshot" accept="image/*" required>
-                  </div>
-                </div>
-
                 <div class="d-flex justify-content-between mt-4">
                   <button type="button" class="btn btn-prev-step py-2 px-4">Back</button>
                   <button type="submit" id="donate-submit-btn"
                     class="btn btn-donate-modern py-2 text-white font-weight-bold"
-                    style="border-radius: 8px; flex-grow: 1; margin-left: 10px;" disabled>Submit Donation
-                    Details</button>
+                    style="border-radius: 8px; flex-grow: 1; margin-left: 10px;">Submit Donation Details</button>
                 </div>
 
                 <!-- Trust Indicator -->
@@ -316,11 +305,37 @@
   <script src="js/jquery.magnific-popup.min.js"></script>
   <script src="js/scrollax.min.js"></script>
 
-  <!-- EmailJS SDK and scripts -->
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js" defer></script>
+
   <script src="js/components.js"></script>
   <script src="js/email-service.js"></script>
   <script src="js/main.js"></script>
+
+  <!-- Custom Success Modal -->
+  <div id="donation-success-modal" class="custom-modal-overlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15, 23, 42, 0.65); backdrop-filter: blur(4px); z-index: 9999; align-items: center; justify-content: center;">
+    <div class="custom-modal-content" style="background: #ffffff; padding: 30px; border-radius: 16px; max-width: 450px; width: 90%; text-align: center; box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); border: 1px solid rgba(226, 232, 240, 0.8); transform: scale(0.9); transition: transform 0.3s ease;">
+      <div class="modal-icon-wrap" style="width: 60px; height: 60px; background: #dcfce7; color: #22c55e; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-size: 28px;">
+        <i class="fa fa-check-circle"></i>
+      </div>
+      <h3 style="font-weight: 800; color: #1e293b; font-size: 22px; margin-bottom: 12px; font-family: 'Montserrat', sans-serif;">Donation Submitted!</h3>
+      <p style="color: #475569; font-size: 14.5px; line-height: 1.6; margin-bottom: 24px; font-family: 'Inter', sans-serif;">
+        Thank you for supporting the Divy Jyot Foundation.
+        <br><br>
+        <strong>Please send your payment screenshot to our WhatsApp</strong> at
+        <a href="https://wa.me/919099038105?text=Hello%20Divy%20Jyot%20Foundation%2C%20here%20is%20my%20donation%20screenshot" target="_blank" style="color: #25d366; font-weight: 700; text-decoration: none;">
+          <i class="fa fa-whatsapp mr-1"></i> +91 90990 38105
+        </a>
+        so we can verify your contribution.
+      </p>
+      <div class="d-flex flex-column" style="gap: 10px;">
+        <a href="https://wa.me/919099038105?text=Hello%20Divy%20Jyot%20Foundation%2C%20here%20is%20my%20donation%20screenshot" target="_blank" class="btn btn-success py-2.5 font-weight-bold" style="background: #25d366; border: none; border-radius: 8px; color: #fff; width: 100%; display: block; text-align: center; text-decoration: none; padding: 10px 0;">
+          <i class="fa fa-whatsapp mr-1"></i> Send Screenshot on WhatsApp
+        </a>
+        <button type="button" id="close-success-modal-btn" class="btn btn-secondary py-2.5 font-weight-bold" style="background: #64748b; border: none; border-radius: 8px; color: #fff; width: 100%; padding: 10px 0;">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
 
 </body>
 

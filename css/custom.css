@@ -1195,6 +1195,17 @@ textarea.form-control {
   text-align: left;
 }
 
+.donor-author .name {
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+}
+
+.donor-author .position {
+  color: #f8a1c1 !important;
+  font-weight: 600 !important;
+}
+
 .donor-author .author-img {
   width: 50px;
   height: 50px;

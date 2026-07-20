@@ -316,57 +316,155 @@
 
     /* Outreach Cards */
     .outreach-card {
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 18px;
-      padding: 40px 36px;
+      background: rgba(255, 255, 255, 0.05) !important;
+      border: 1px solid rgba(255, 255, 255, 0.12) !important;
+      border-radius: 20px;
+      padding: 45px 36px;
       height: 100%;
-      transition: background 0.3s ease;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .outreach-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, #38bdf8, var(--accent-magenta));
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    .outreach-card:hover::before {
+      opacity: 1;
     }
 
     .outreach-card:hover {
-      background: rgba(255, 255, 255, 0.07);
+      background: rgba(255, 255, 255, 0.08) !important;
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(56, 189, 248, 0.15);
+      border-color: rgba(255, 255, 255, 0.2) !important;
     }
 
     .outreach-card .outreach-icon {
-      font-size: 28px;
-      color: #38bdf8;
-      margin-bottom: 18px;
-      display: block;
+      font-size: 32px;
+      color: #38bdf8 !important;
+      margin-bottom: 22px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 64px;
+      height: 64px;
+      background: rgba(56, 189, 248, 0.1);
+      border-radius: 16px;
+      transition: all 0.4s ease;
+    }
+
+    .outreach-card:hover .outreach-icon {
+      background: #38bdf8;
+      color: #0f172a !important;
+      transform: rotate(360deg);
     }
 
     .outreach-card h3 {
       font-family: 'Montserrat', sans-serif;
-      font-size: 21px;
+      font-size: 22px;
       font-weight: 700;
-      color: #fff;
-      margin-bottom: 14px;
+      color: #ffffff !important;
+      margin-bottom: 16px;
+      letter-spacing: 0.5px;
     }
 
     .outreach-card p {
       font-family: 'Inter', sans-serif;
-      font-size: 14px;
-      line-height: 1.75;
-      color: #94a3b8;
+      font-size: 14.5px;
+      line-height: 1.8;
+      color: #cbd5e1 !important;
+      margin-bottom: 16px;
     }
 
     /* Volunteer CTA */
     .volunteer-cta-section {
       position: relative;
+      background: linear-gradient(135deg, #0b132b 0%, #1c2541 100%) !important;
+      padding: 8em 0 !important;
       overflow: hidden;
     }
 
-    .volunteer-cta-section .overlay {
+    .volunteer-cta-section::after {
+      content: '';
       position: absolute;
-      inset: 0;
-      background: #0f172a;
-      opacity: 0.96;
+      top: -50%;
+      right: -30%;
+      width: 800px;
+      height: 800px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(218,27,96,0.1) 0%, transparent 70%);
       z-index: 1;
+      pointer-events: none;
+    }
+
+    .volunteer-cta-section::before {
+      content: '';
+      position: absolute;
+      bottom: -50%;
+      left: -30%;
+      width: 800px;
+      height: 800px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(56,189,248,0.08) 0%, transparent 70%);
+      z-index: 1;
+      pointer-events: none;
     }
 
     .volunteer-cta-section .container {
       position: relative;
       z-index: 2;
+    }
+
+    .volunteer-cta-card {
+      background: rgba(255, 255, 255, 0.03) !important;
+      border: 1px solid rgba(255, 255, 255, 0.08) !important;
+      border-radius: 24px;
+      padding: 60px 40px;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+      transition: all 0.4s ease;
+    }
+
+    .volunteer-cta-card:hover {
+      border-color: rgba(216, 27, 96, 0.3) !important;
+      box-shadow: 0 25px 60px rgba(216, 27, 96, 0.15) !important;
+    }
+
+    .btn-cta-volunteer {
+      background: linear-gradient(90deg, var(--accent-magenta) 0%, #a21246 100%) !important;
+      color: #ffffff !important;
+      border: none !important;
+      border-radius: 40px;
+      padding: 16px 42px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      display: inline-block;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      box-shadow: 0 6px 20px rgba(216, 27, 96, 0.4);
+      text-decoration: none !important;
+    }
+
+    .btn-cta-volunteer:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 25px rgba(216, 27, 96, 0.6);
+      background: linear-gradient(90deg, #a21246 0%, var(--accent-magenta) 100%) !important;
     }
 
     @media (max-width: 768px) {
@@ -391,7 +489,7 @@
 
   <!-- HERO -->
   <section class="hero-wrap hero-wrap-2 d-flex align-items-center justify-content-center campaign-hero"
-    style="background-image: url('images/campgine_hero.png'); min-height: 480px; position: relative;"
+    style="background-image: url('images/campg2.png'); min-height: 480px; position: relative;"
     data-stellar-background-ratio="0.5">
     <div class="overlay" style="background: rgba(11,19,43,0.87);"></div>
     <div class="container" style="position: relative; z-index: 10;">
@@ -444,7 +542,7 @@
         </div>
         <div class="col-md-6 col-lg-3 mb-4 ftco-animate">
           <div class="campaign-card">
-            <div class="card-img" style="background-image:url(images/campg2.png);"><span
+            <div class="card-img" style="background-image:url(images/campgine_hero.png);"><span
                 class="status-pill pill-active">Active</span></div>
             <div class="card-body">
               <h3><a href="donate.html">Gujarat Outreach Seminars</a></h3>
@@ -593,8 +691,8 @@
             <div class="process-step-card">
               <div class="step-number-badge">03</div>
               <div>
-                <h5>Toll-Free Helpline Support</h5>
-                <p>Call the national toll-free food safety helpline at <strong>1800-11-2100</strong> to seek guidance
+                <h5>Helpline Support</h5>
+                <p>Call to  food safety helpline at <strong>878081868</strong> to seek guidance
                   and register instant complaints.</p>
               </div>
             </div>
@@ -648,22 +746,22 @@
 
   <!-- VOLUNTEER CTA -->
   <section class="ftco-section testimony-section volunteer-cta-section">
-    <div class="overlay"></div>
-    <div class="container py-2">
+    <div class="container">
       <div class="row justify-content-center">
-        <div class="col-md-8 heading-section heading-section-white text-center ftco-animate">
-          <span class="camp-eyebrow">Volunteer Engagement</span>
-          <h2 class="camp-heading camp-heading-white mb-4">Join the Fight for Safe Food</h2>
-          <p class="mb-4"
-            style="font-family:'Inter',sans-serif; font-size:15px; line-height:1.75; color:rgba(255,255,255,0.7);">
-            We are building a powerful network of dedicated volunteers committed to creating a safer food environment.
-            As a volunteer, you can lead local detection workshops, assist in spreading awareness, and guide local
-            consumers on reporting adulteration violations in your city.
-          </p>
-          <a href="volunteer.html" class="btn btn-outline-magenta py-3 px-5"
-            style="border-radius:35px; text-transform:uppercase; font-size:13px; letter-spacing:1px; font-family:'Montserrat',sans-serif; font-weight:700;">
-            Join Our Network Today
-          </a>
+        <div class="col-md-9 text-center ftco-animate">
+          <div class="volunteer-cta-card">
+            <span class="camp-eyebrow" style="color: var(--accent-magenta) !important; font-weight: 700; margin-bottom: 12px; display: inline-block;">Volunteer Engagement</span>
+            <h2 class="camp-heading camp-heading-white mb-4" style="color: #ffffff !important;">Join the Fight for Safe Food</h2>
+            <p class="mb-5"
+              style="font-family:'Inter',sans-serif; font-size:15.5px; line-height:1.8; color:rgba(255,255,255,0.75); max-width: 680px; margin-left: auto; margin-right: auto;">
+              We are building a powerful network of dedicated volunteers committed to creating a safer food environment.
+              As a volunteer, you can lead local detection workshops, assist in spreading awareness, and guide local
+              consumers on reporting adulteration violations in your city.
+            </p>
+            <a href="volunteer.html" class="btn-cta-volunteer">
+              Join Our Network Today
+            </a>
+          </div>
         </div>
       </div>
     </div>
@@ -688,7 +786,7 @@
   <script src="js/owl.carousel.min.js"></script>
   <script src="js/jquery.magnific-popup.min.js"></script>
   <script src="js/scrollax.min.js"></script>
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
   <script src="js/components.js"></script>
   <script src="js/email-service.js"></script>
   <script src="js/main.js"></script>

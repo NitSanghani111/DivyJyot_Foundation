@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
           <div class="row">
             <div class="col-md-6 d-flex align-items-center">
               <p class="mb-0 phone pl-md-2" style="font-size: 13px; font-weight: 500;">
-                <a href="tel:+919099038105" class="mr-3" style="color: rgba(255,255,255,0.8);"><span class="fa fa-phone mr-1"></span> +91 90990 38105</a> 
+                <a href="tel:+91878081868" class="mr-3" style="color: rgba(255,255,255,0.8);"><span class="fa fa-phone mr-1"></span> +91  87808 51868</a> 
                 <a href="mailto:info@divyjyotfoundation.com" style="color: rgba(255,255,255,0.8);"><span class="fa fa-paper-plane mr-1"></span> info@divyjyotfoundation.com</a>
               </p>
             </div>
@@ -21,8 +21,8 @@ document.addEventListener("DOMContentLoaded", function () {
               <div class="social-media">
                 <p class="mb-0 d-flex">
                   <a href="#" class="d-flex align-items-center justify-content-center" style="width:24px; height:24px; color:#fff; font-size:12px; margin-left: 10px; opacity:0.8;"><span class="fa fa-facebook"></span></a>
-                  <a href="#" class="d-flex align-items-center justify-content-center" style="width:24px; height:24px; color:#fff; font-size:12px; margin-left: 10px; opacity:0.8;"><span class="fa fa-twitter"></span></a>
-                  <a href="#" class="d-flex align-items-center justify-content-center" style="width:24px; height:24px; color:#fff; font-size:12px; margin-left: 10px; opacity:0.8;"><span class="fa fa-instagram"></span></a>
+                  <a href="https://youtube.com/@divynewsgujarat?si=lgfT7i7bnQNr-T1y" class="d-flex align-items-center justify-content-center" style="width:24px; height:24px; color:#fff; font-size:12px; margin-left: 10px; opacity:0.8;"><span class="fa fa-youtube"></span></a>
+                  <a href="https://www.instagram.com/divyjyotfoundation027/" target="_blank" rel="noopener noreferrer" class="d-flex align-items-center justify-content-center" style="width:24px; height:24px; color:#fff; font-size:12px; margin-left: 10px; opacity:0.8;"><span class="fa fa-instagram"></span></a>
                 </p>
               </div>
             </div>
@@ -35,8 +35,8 @@ document.addEventListener("DOMContentLoaded", function () {
           <a class="navbar-brand d-flex align-items-center" href="index.html" style="text-decoration: none;">
             <img src="logo.jpeg" alt="Divy Jyot Foundation Logo" class="header-logo">
             <div>
-              <span style="font-size: 21px; display: block; line-height: 1.1; font-weight: 800; letter-spacing: 0.5px; color: #fff;">DIVY JYOT</span>
-              <span style="font-size: 11px; display: block; font-weight: 600; letter-spacing: 1.2px; color: #d81b60;">FOUNDATION</span>
+              <span style="font-size: 27px; display: block; line-height: 1.1; font-weight: 800; letter-spacing: 0.5px; color: #fff;">DIVY JYOT</span>
+              <span style="font-size: 14px; display: block; font-weight: 600; letter-spacing: 1.2px; color: #fff;">FOUNDATION</span>
             </div>
           </a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
@@ -70,24 +70,26 @@ document.addEventListener("DOMContentLoaded", function () {
               <div class="d-flex align-items-center mb-4">
                 <img src="logo.jpeg" alt="Divy Jyot Foundation Logo" class="footer-logo">
                 <div>
-                  <span style="font-size: 18px; display: block; line-height: 1.1; font-weight: 800; letter-spacing: 0.5px; color: #fff; font-family: Montserrat, sans-serif;">DIVY JYOT</span>
-                  <span style="font-size: 10px; display: block; font-weight: 600; letter-spacing: 1.2px; color: #d81b60; font-family: Montserrat, sans-serif;">FOUNDATION</span>
+                  <span style="font-size: 27px; display: block; line-height: 1.1; font-weight: 800; letter-spacing: 0.5px; color: #fff; font-family: Montserrat, sans-serif;">DIVY JYOT</span>
+                  <span style="font-size: 14px; display: block; font-weight: 600; letter-spacing: 1.2px; color: #fff; font-family: Montserrat, sans-serif;">FOUNDATION</span>
                 </div>
               </div>
               <p style="font-size: 14px; line-height: 1.6; color: #94a3b8;">
                 Divy Jyot Foundation is a registered social impact organization dedicated to creating awareness about food safety, educating consumers, supporting regulatory compliance, and working towards a healthier, adulteration-free Gujarat.
               </p>
               <div class="mb-4" style="font-size: 13.5px; color: #cbd5e1; line-height: 1.8;">
-                <p class="mb-1"><span class="fa fa-map-marker mr-2" style="color:#d81b60;"></span> Ahmedabad, Gujarat, India</p>
+                <p class="mb-1"><span class="fa fa-map-marker mr-2" style="color:#d81b60;"></span>2nd Floor, Gam Metro Station, PUSHP BUSINESS CAMPUS, A-218, Pranami Nagar, Vastral, Ahmedabad, Gujarat 382418, India</p>
+
+                </br>
                 <p class="mb-1"><span class="fa fa-phone mr-2" style="color:#d81b60;"></span> General: +91 90990 38105</p>
                 <p class="mb-1"><span class="fa fa-phone mr-2" style="color:#d81b60;"></span> Helpline: +91 87805 18680</p>
                 <p class="mb-1"><span class="fa fa-envelope mr-2" style="color:#d81b60;"></span> info@divyjyotfoundation.com</p>
                 <p class="mb-1"><span class="fa fa-globe mr-2" style="color:#d81b60;"></span> <a href="https://www.divyjyotfoundation.com" target="_blank" style="color:#94a3b8;">www.divyjyotfoundation.com</a></p>
               </div>
               <ul class="ftco-footer-social p-0 mb-4 d-flex">
-                <li style="list-style:none; margin-right:8px;"><a href="#" data-toggle="tooltip" data-placement="top" title="Facebook" class="d-flex align-items-center justify-content-center" style="width:36px; height:36px; border-radius:50%;"><span class="fa fa-facebook"></span></a></li>
-                <li style="list-style:none; margin-right:8px;"><a href="#" data-toggle="tooltip" data-placement="top" title="Twitter" class="d-flex align-items-center justify-content-center" style="width:36px; height:36px; border-radius:50%;"><span class="fa fa-twitter"></span></a></li>
-                <li style="list-style:none; margin-right:8px;"><a href="#" data-toggle="tooltip" data-placement="top" title="Instagram" class="d-flex align-items-center justify-content-center" style="width:36px; height:36px; border-radius:50%;"><span class="fa fa-instagram"></span></a></li>
+                <li style="list-style:none; margin-right:8px;"><a href="" data-toggle="tooltip" data-placement="top" title="Facebook" class="d-flex align-items-center justify-content-center" style="width:36px; height:36px; border-radius:50%;"><span class="fa fa-facebook"></span></a></li>
+                <li style="list-style:none; margin-right:8px;"><a href="https://youtube.com/@divynewsgujarat?si=lgfT7i7bnQNr-T1y" data-toggle="tooltip" data-placement="top" title="youtube" class="d-flex align-items-center justify-content-center" style="width:36px; height:36px; border-radius:50%;"><span class="fa fa-youtube"></span></a></li>
+                <li style="list-style:none; margin-right:8px;"><a href="https://www.instagram.com/divyjyotfoundation027?igsh=eWQxN2l1eDB1MnB0" target="_blank" rel="noopener noreferrer" data-toggle="tooltip" data-placement="top" title="Instagram" class="d-flex align-items-center justify-content-center" style="width:36px; height:36px; border-radius:50%;"><span class="fa fa-instagram"></span></a></li>
               </ul>
               <p><a href="donate.html" class="btn btn-primary px-4 py-2" style="font-size:13px; border-radius:30px !important;">Support Our Work</a></p>
             </div>
@@ -115,8 +117,6 @@ document.addEventListener("DOMContentLoaded", function () {
               <ul class="list-unstyled" style="font-size:14px; line-height:2.0;">
                 <li><a href="campaign.html" class="py-1 d-block" style="color: #94a3b8;"><span class="fa fa-chevron-right mr-2" style="font-size:10px; color:#d81b60;"></span>Vadodara Adulteration Camp</a></li>
                 <li><a href="campaign.html" class="py-1 d-block" style="color: #94a3b8;"><span class="fa fa-chevron-right mr-2" style="font-size:10px; color:#d81b60;"></span>Ahmedabad School Outreach</a></li>
-                <li><a href="campaign.html" class="py-1 d-block" style="color: #94a3b8;"><span class="fa fa-chevron-right mr-2" style="font-size:10px; color:#d81b60;"></span>Surat Milk Testing Campaign</a></li>
-                <li><a href="campaign.html" class="py-1 d-block" style="color: #94a3b8;"><span class="fa fa-chevron-right mr-2" style="font-size:10px; color:#d81b60;"></span>Rajkot Public Seminars</a></li>
                 <li><a href="about.html" class="py-1 d-block" style="color: #94a3b8;"><span class="fa fa-chevron-right mr-2" style="font-size:10px; color:#d81b60;"></span>Interactive Footprint Map</a></li>
               </ul>
             </div>
