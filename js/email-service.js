@@ -19,7 +19,7 @@ const decodeKey = (encodedStr) => {
     }
     return encodedStr.trim();
   } catch (e) {
-    return encodedStr.trim(); 
+    return encodedStr.trim();
   }
 };
 
@@ -249,6 +249,7 @@ async function setupContactForm() {
 
     const nameEl = form.querySelector("[name='name']");
     const emailEl = form.querySelector("[name='email']");
+    const phoneEl = form.querySelector("[name='phone']");
     const subjectEl = form.querySelector("[name='subject']");
     const messageEl = form.querySelector("[name='message']");
     const submitBtn = form.querySelector("[type='submit']");
@@ -269,6 +270,16 @@ async function setupContactForm() {
       isFormValid = false;
     } else {
       setFieldValidation(emailEl, true);
+    }
+
+    // Validate Phone Number
+    if (phoneEl) {
+      if (!validators.isValidPhone(validators.cleanInput(phoneEl.value))) {
+        setFieldValidation(phoneEl, false, "Please enter a valid 10-digit mobile number");
+        isFormValid = false;
+      } else {
+        setFieldValidation(phoneEl, true);
+      }
     }
 
     // Validate Subject
@@ -295,6 +306,7 @@ async function setupContactForm() {
     const payload = {
       "Name": nameEl.value,
       "Email Address": emailEl.value,
+      "Mobile Number": phoneEl ? phoneEl.value : "",
       "Subject": subjectEl.value,
       "Message": messageEl.value
     };

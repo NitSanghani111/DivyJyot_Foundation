@@ -78,7 +78,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 Divy Jyot Foundation is a registered social impact organization dedicated to creating awareness about food safety, educating consumers, supporting regulatory compliance, and working towards a healthier, adulteration-free Gujarat.
               </p>
               <div class="mb-4" style="font-size: 13.5px; color: #cbd5e1; line-height: 1.8;">
-                <p class="mb-1"><span class="fa fa-map-marker mr-2" style="color:#d81b60;"></span>2nd Floor, Gam Metro Station, PUSHP BUSINESS CAMPUS, A-218, Pranami Nagar, Vastral, Ahmedabad, Gujarat 382418, India</p>
+                <p class="mb-1"><span class="fa fa-map-marker mr-2" style="color:#d81b60;"></span>2nd Floor, PUSHP
+												BUSINESS CAMPUS, A-218,Vastral Gam Metro Station, Ahmedabad, Gujarat
+												382418, India</p>
 
                 </br>
                 <p class="mb-1"><span class="fa fa-phone mr-2" style="color:#d81b60;"></span> General: +91 90990 38105</p>
@@ -133,11 +135,18 @@ document.addEventListener("DOMContentLoaded", function () {
               </ul>
             </div>
           </div>
-          <div class="row mt-5" style="border-top: 1px solid rgba(255,255,255,0.06); padding-top: 25px;">
-            <div class="col-md-12 text-center">
+          <div class="row mt-4 align-items-center" style="border-top: 1px solid rgba(255,255,255,0.06); padding-top: 25px;">
+            <div class="col-md-7 text-center text-md-left mb-3 mb-md-0">
               <p class="copyright" style="font-size: 13px; color: #64748b; margin-bottom:0;">
                 Copyright &copy; ${new Date().getFullYear()} All rights reserved | <b>Divy Jyot Foundation</b> | <span style="color:#cbd5e1; font-weight:600;">Regd. No. F/21350/GUJ/21766</span> 
               </p>
+            </div>
+            <div class="col-md-5 text-center text-md-right">
+              <div class="visitor-counter-badge" style="display: inline-flex; align-items: center; background: rgba(255, 255, 255, 0.05); padding: 6px 14px; border-radius: 20px; border: 1px solid rgba(255, 255, 255, 0.1); font-size: 12px; color: #cbd5e1;">
+                <span class="fa fa-users mr-2" style="color: #d81b60; font-size: 13px;"></span>
+                <span style="margin-right: 6px; font-weight: 500;">Total Visitors:</span>
+                <strong id="visitor-count-number" style="color: #ffffff; font-weight: 700; letter-spacing: 0.5px; font-family: Montserrat, sans-serif;">---</strong>
+              </div>
             </div>
           </div>
         </div>
@@ -145,7 +154,64 @@ document.addEventListener("DOMContentLoaded", function () {
     `;
   }
 
-  // 3. HIGHLIGHT THE ACTIVE NAVIGATION LINK
+  // 3. DYNAMIC UNIQUE VISITOR COUNTER LOGIC (SESSION-BASED & ANTI-SPAM PROTECTED)
+  async function initVisitorCounter() {
+    const counterEl = document.getElementById("visitor-count-number");
+    if (!counterEl) return;
+
+    const BASE_OFFSET = 0;
+    const WORKSPACE = "divyjyot-foundation-gujarat";
+    const COUNTER_NAME = "unique_visitors";
+
+    // 24-Hour Cooldown window per user device (in ms) to prevent refresh & bot spam
+    const COOLDOWN_MS = 24 * 60 * 60 * 1000;
+    const lastVisit = parseInt(localStorage.getItem("djf_last_visit_time") || "0");
+    const now = Date.now();
+
+    const isNewSession = !sessionStorage.getItem("djf_session_active");
+    const isCooldownPassed = (now - lastVisit) > COOLDOWN_MS;
+
+    // Only increment if it's a NEW session AND 24h has passed for this user
+    const shouldIncrement = isNewSession && isCooldownPassed;
+
+    let apiUrl = `https://api.counterapi.dev/v1/${WORKSPACE}/${COUNTER_NAME}`;
+    if (shouldIncrement) {
+      apiUrl += "/up"; // Increment endpoint
+    }
+
+    try {
+      const response = await fetch(apiUrl);
+      if (response.ok) {
+        const data = await response.json();
+        const rawCount = (data.count !== undefined ? data.count : (data.value !== undefined ? data.value : 0));
+
+        if (shouldIncrement) {
+          sessionStorage.setItem("djf_session_active", "true");
+          localStorage.setItem("djf_last_visit_time", now.toString());
+        }
+
+        const total = rawCount + BASE_OFFSET;
+        counterEl.textContent = total.toLocaleString("en-IN");
+        return;
+      }
+    } catch (e) {
+      console.warn("Counter API offline, using local session fallback:", e);
+    }
+
+    // Local Storage Fallback if API is offline
+    let localCount = parseInt(localStorage.getItem("djf_unique_visits") || "1050");
+    if (shouldIncrement) {
+      localCount += 1;
+      localStorage.setItem("djf_unique_visits", localCount.toString());
+      sessionStorage.setItem("djf_session_active", "true");
+      localStorage.setItem("djf_last_visit_time", now.toString());
+    }
+    counterEl.textContent = (localCount + BASE_OFFSET).toLocaleString("en-IN");
+  }
+
+  initVisitorCounter();
+
+  // 4. HIGHLIGHT THE ACTIVE NAVIGATION LINK
   const path = window.location.pathname;
   const page = path.split("/").pop();
 
